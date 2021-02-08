@@ -9,7 +9,7 @@ set -euo pipefail
 
 _echo "Creating SSL certificate and key..."
 mkdir -p /etc/ssl/private
-openssl req -newkey rsa:1024 \
+openssl req -newkey rsa:${SSL_BITS} \
     -x509 \
     -sha256 \
     -days 3650 \

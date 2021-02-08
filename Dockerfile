@@ -10,7 +10,9 @@ EXPOSE 21 990 18700-18710
 
 ENV \
     # the external IP address of the server
-    EXTERNAL_IP=
+    EXTERNAL_IP= \
+    # the number of bits for the SSL certificate
+    SSL_BITS=4096
 
 COPY ./VSFTPD_BUILD /tmp/VSFTPD_BUILD
 ARG GOMPLATE_VERSION=3.8.0-r0
