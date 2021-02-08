@@ -8,4 +8,4 @@ set -euo pipefail
 #======================================================================================================================
 
 _echo "Starting VSFTPD"
-vsftpd /etc/vsftpd/vsftpd.conf
+exec vsftpd /etc/vsftpd/vsftpd.conf
