@@ -7,5 +7,5 @@ set -euo pipefail
 # Run VSFTPD server
 #======================================================================================================================
 
-_echo "Starting VSFTPD" 2>&1 | tee /var/log/vsftpd.log
-/usr/sbin/vsftpd /etc/vsftpd/vsftpd.conf
+_echo "Starting VSFTPD"
+vsftpd /etc/vsftpd/vsftpd.conf

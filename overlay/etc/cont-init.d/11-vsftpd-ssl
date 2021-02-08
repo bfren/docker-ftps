@@ -7,7 +7,7 @@ set -euo pipefail
 # Create FTP configuration
 #======================================================================================================================
 
-_echo "Creating SSL files..."
+_echo "Creating SSL certificate and key..."
 mkdir -p /etc/ssl/private
 openssl req -newkey rsa:1024 \
     -x509 \
