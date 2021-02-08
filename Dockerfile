@@ -11,6 +11,8 @@ EXPOSE 21 990 18700-18710
 ENV \
     # the external IP address of the server
     EXTERNAL_IP= \
+    # the external URI of the server (takes precedence over EXTERNAL_IP - but you must use one or the other)
+    EXTERNAL_URI= \
     # the number of bits for the SSL certificate
     SSL_BITS=4096
 

@@ -159,8 +159,12 @@ strict_ssl_read_eof=NO
 
 # external ip here
 # if you are in a private network and expect to be visited by the outside
+{{ if ne (getenv "EXTERNAL_URI") "" }}
+pasv_address={{ getenv "EXTERNAL_URI" }}
+pasv_addr_resolve=YES
+{{ else }}
 pasv_address={{ getenv "EXTERNAL_IP" }}
-#pasv_addr_resolve=YES
+{{ end }}
 
 pasv_enable=YES
 pasv_min_port=18700
