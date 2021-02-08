@@ -132,29 +132,29 @@ listen=YES
 # and key files. We actually combined both pieces of
 # information into a single file, so we will point
 # both options to the same file:
-#rsa_cert_file=/etc/ssl/private/vsftpd.pem
-#rsa_private_key_file=/etc/ssl/private/vsftpd.pem
+rsa_cert_file=/etc/ssl/private/vsftpd.pem
+rsa_private_key_file=/etc/ssl/private/vsftpd.pem
 
 # Next, we need enable the use of these files and
 # disable anonymous users. We should also force the
 # use of SSL for both data transfer and login
 # routines. This will make the security mandatory:
 
-#ssl_enable=YES
-#allow_anon_ssl=NO
-#force_local_data_ssl=YES
-#force_local_logins_ssl=YES
+ssl_enable=YES
+allow_anon_ssl=NO
+force_local_data_ssl=YES
+force_local_logins_ssl=YES
 
 # Next, we will restrict the type of connection to
 # TLS, which is more secure than SSL. We will do this
 # by explicitly allowing TLS and denying the use of SSL:
-#ssl_tlsv1=YES
-#ssl_sslv2=NO
-#ssl_sslv3=NO
+ssl_tlsv1=YES
+ssl_sslv2=NO
+ssl_sslv3=NO
 
 # We'll add a few more configuration options before finishing:
 #require_ssl_reuse=NO
-#ssl_ciphers=HIGH
+ssl_ciphers=HIGH
 
 # external ip here
 # if you are in a private network and expect to be visited by the outside

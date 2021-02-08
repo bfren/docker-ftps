@@ -19,11 +19,12 @@ RUN export VSFTPD_VERSION=$(cat /tmp/VSFTPD_BUILD) \
     && apk -U upgrade \
     && apk add \
         gomplate=${GOMPLATE_VERSION} \
+        openssl \
         vsftpd=${VSFTPD_VERSION} \
     && rm -rf /var/cache/apk/*
 
 COPY ./overlay /
 
-VOLUME [ "/files" ]
+VOLUME [ "/files", "/etc/ssl" ]
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=5 CMD [ "healthcheck" ]
