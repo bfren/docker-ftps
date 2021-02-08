@@ -27,6 +27,7 @@ RUN export VSFTPD_VERSION=$(cat /tmp/VSFTPD_BUILD) \
 
 COPY ./overlay /
 
-VOLUME [ "/files", "/etc/ssl" ]
+VOLUME [ "/files", "/ssl" ]
+RUN ln -s /ssl /etc/ssl/private
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=5 CMD [ "healthcheck" ]
