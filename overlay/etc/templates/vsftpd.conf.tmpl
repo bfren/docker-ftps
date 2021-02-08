@@ -45,7 +45,7 @@ dirmessage_enable=YES
 xferlog_enable=YES
 #
 # Make sure PORT transfer connections originate from port 20 (ftp-data).
-connect_from_port_20=YES
+#connect_from_port_20=YES
 #
 # If you want, you can arrange for uploaded anonymous files to be owned by
 # a different user. Note! Using "root" for uploaded files is not
@@ -140,6 +140,7 @@ rsa_private_key_file=/etc/ssl/private/vsftpd.pem
 # routines. This will make the security mandatory:
 
 ssl_enable=YES
+debug_ssl=YES
 allow_anon_ssl=NO
 force_local_data_ssl=YES
 force_local_logins_ssl=YES
@@ -147,12 +148,12 @@ force_local_logins_ssl=YES
 # Next, we will restrict the type of connection to
 # TLS, which is more secure than SSL. We will do this
 # by explicitly allowing TLS and denying the use of SSL:
-ssl_tlsv1=YES
+ssl_tlsv1_2=YES
 ssl_sslv2=NO
 ssl_sslv3=NO
 
 # We'll add a few more configuration options before finishing:
-#require_ssl_reuse=NO
+require_ssl_reuse=NO
 ssl_ciphers=HIGH
 
 # external ip here

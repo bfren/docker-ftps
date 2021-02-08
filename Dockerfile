@@ -6,7 +6,7 @@ LABEL maintainer="Ben Green <ben@bcgdesign.com>" \
     org.label-schema.vendor="Ben Green" \
     org.label-schema.schema-version="1.0"
 
-EXPOSE 21 18700-18710
+EXPOSE 21 990 18700-18710
 
 ENV \
     # the external IP address of the server
