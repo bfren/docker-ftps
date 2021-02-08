@@ -7,6 +7,13 @@ set -euo pipefail
 # Create FTP configuration
 #======================================================================================================================
 
-_echo "Creating SSL certificates..."
+_echo "Creating SSL files..."
 mkdir -p /etc/ssl/private
-openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout /etc/ssl/private/vsftpd.pem -out /etc/ssl/private/vsftpd.pem
+openssl req -newkey rsa:1024 \
+    -x509 \
+    -sha256 \
+    -days 3650 \
+    -nodes \
+    -out /etc/ssl/private/vsftpd.pem \
+    -keyout /etc/ssl/private/vsftpd.pem \
+    -subj "/C=NA/ST=NA/L=NA/O=NA/OU=NA/CN=vsftpd"
