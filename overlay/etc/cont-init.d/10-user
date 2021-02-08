@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv sh
+
+set -euo pipefail
+
+
+#======================================================================================================================
+# Create FTP user
+#======================================================================================================================
+
+USER=${FTP_USER}
+PASS=${FTP_PASS}
+UID=${FTP_UID:-1000}
+
+_echo "Creating user ${USER}..."
+echo -e "${PASS}\n${PASS}" | adduser -h /sites -s /sbin/nologin -u ${UID} ${NAME}
+_done
+
+FILES=/files
+_echo "Giving user permission to access ${FILES}..."
+chown ${USER}:${USER} ${FILES}
+_done

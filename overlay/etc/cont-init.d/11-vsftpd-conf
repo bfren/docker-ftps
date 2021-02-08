@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv sh
+
+set -euo pipefail
+
+
+#======================================================================================================================
+# Create FTP configuration
+#======================================================================================================================
+
+_echo "Writing VSFTPD config..."
+gomplate \
+    -o /etc/vsftpd/vsftpd.conf \
+    -f /etc/templates/vsftpd.conf.tmpl
+_done
