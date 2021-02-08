@@ -25,11 +25,11 @@ RUN export VSFTPD_VERSION=$(cat /tmp/VSFTPD_BUILD) \
         gomplate=${GOMPLATE_VERSION} \
         openssl \
         vsftpd=${VSFTPD_VERSION} \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* /etc/ssl/private
 
 COPY ./overlay /
 
-VOLUME [ "/files", "/ssl" ]
 RUN ln -s /ssl /etc/ssl/private
+VOLUME [ "/files", "/ssl" ]
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=5 CMD [ "healthcheck" ]
