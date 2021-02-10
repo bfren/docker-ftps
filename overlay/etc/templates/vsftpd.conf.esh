@@ -159,7 +159,7 @@ strict_ssl_read_eof=NO
 
 # external ip here
 # if you are in a private network and expect to be visited by the outside
-<% if [ -n ${EXTERNAL_URI} ] ; then %>
+<% if [ -n "${EXTERNAL_URI}" ] ; then %>
 pasv_address=<%= ${EXTERNAL_URI} %>
 pasv_addr_resolve=YES
 <% else %>
