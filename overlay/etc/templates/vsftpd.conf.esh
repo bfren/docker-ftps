@@ -69,7 +69,7 @@ xferlog_enable=YES
 #
 # It is recommended that you define on your system a unique user which the
 # ftp server can use as a totally isolated and unprivileged user.
-#nopriv_user=ftpsecure
+nopriv_user=<%= ${FTP_USER} %>
 #
 # Enable this and the server will recognise asynchronous ABOR requests. Not
 # recommended for security (the code is non-trivial). Not enabling it,
