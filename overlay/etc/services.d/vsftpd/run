@@ -7,5 +7,8 @@ set -euo pipefail
 # Run VSFTPD server
 #======================================================================================================================
 
+CONF=/etc/vsftpd/vsftpd.conf
+[[ ! -f ${CONF} ]] && _error "VSFTPD configuration file not found."
+
 _echo "Starting VSFTPD"
-vsftpd /etc/vsftpd/vsftpd.conf
+vsftpd ${CONF}
