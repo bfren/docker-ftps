@@ -1,0 +1,74 @@
+name: build-main
+
+on:
+  push:
+    branches:
+      - 'main'
+    tags-ignore:
+      - '**'
+    paths:
+      - '.github/workflows/build-main.yml'
+      - 'overlay/**'
+      - 'VERSION'
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout code
+        uses: actions/checkout@v2
+      -
+        name: Read VSFTPD version - major
+        uses: bencgreen/read-file-action@v1
+        with:
+          path: ./VSFTPD_MAJOR
+        id: vsftpd_major
+      -
+        name: Read Redis version - minor
+        uses: bencgreen/read-file-action@v1
+        with:
+          path: ./VSFTPD_MINOR
+        id: vsftpd_minor
+      -
+        name: Read Redis version - revision
+        uses: bencgreen/read-file-action@v1
+        with:
+          path: ./VSFTPD_REVISION
+        id: vsftpd_revision
+      -
+        name: Read image version
+        uses: bencgreen/read-file-action@v1
+        with:
+          path: ./VERSION
+        id: version
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          platforms: linux/amd64,linux/arm/v7,linux/arm64
+          tags: |
+            bcgdesign/ftps:latest
+            bcgdesign/ftps:${{ steps.version.outputs.content }}
+            bcgdesign/ftps:vsftpd-${{ steps.vsftpd_major.outputs.content }}
+            bcgdesign/ftps:vsftpd-${{ steps.vsftpd_major.outputs.content }}-${{ steps.version.outputs.content }}
+            bcgdesign/ftps:vsftpd-${{ steps.vsftpd_minor.outputs.content }}
+            bcgdesign/ftps:vsftpd-${{ steps.vsftpd_minor.outputs.content }}-${{ steps.version.outputs.content }}
+            bcgdesign/ftps:vsftpd-${{ steps.vsftpd_revision.outputs.content }}
+      -
+        name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}

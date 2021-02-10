@@ -1,0 +1,14 @@
+#!/usr/bin/with-contenv sh
+
+set -euo pipefail
+
+
+#======================================================================================================================
+# Run VSFTPD server
+#======================================================================================================================
+
+CONF=/etc/vsftpd/vsftpd.conf
+[[ ! -f ${CONF} ]] && bcg-error "VSFTPD configuration file not found."
+
+bcg-echo "Starting VSFTPD"
+vsftpd ${CONF}

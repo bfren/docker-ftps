@@ -1,0 +1,24 @@
+#!/usr/bin/with-contenv sh
+
+set -euo pipefail
+
+
+#======================================================================================================================
+# Create FTP configuration
+#======================================================================================================================
+
+CERT=/ssl/vsftpd.pem
+if [ -e ${CERT} ] ; then
+    bcg-echo "Using existing SSL certificate."
+    exit 0
+fi
+
+bcg-echo "Creating SSL certificate and key..."
+openssl req -newkey rsa:${SSL_BITS} \
+    -x509 \
+    -sha256 \
+    -days 3650 \
+    -nodes \
+    -out ${CERT} \
+    -keyout ${CERT} \
+    -subj "/C=NA/ST=NA/L=NA/O=NA/OU=NA/CN=vsftpd"
