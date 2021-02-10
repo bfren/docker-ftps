@@ -25,7 +25,7 @@ write_enable=YES
 #
 # Default umask for local users is 077. You may wish to change this to 022,
 # if your users expect that (022 is used by most other ftpd's)
-local_umask=022
+local_umask=077
 #
 # Uncomment this to allow the anonymous FTP user to upload files. This only
 # has an effect if the above global write enable is activated. Also, you will
@@ -159,12 +159,12 @@ strict_ssl_read_eof=NO
 
 # external ip here
 # if you are in a private network and expect to be visited by the outside
-{{ if ne (getenv "EXTERNAL_URI") "" }}
-pasv_address={{ getenv "EXTERNAL_URI" }}
+<% if [ -n ${EXTERNAL_URI} ] ; then %>
+pasv_address=<%= ${EXTERNAL_URI} %>
 pasv_addr_resolve=YES
-{{ else }}
-pasv_address={{ getenv "EXTERNAL_IP" }}
-{{ end }}
+<% else %>
+pasv_address=<%= ${EXTERNAL_IP} %>
+<% fi %>
 
 pasv_enable=YES
 pasv_min_port=18700

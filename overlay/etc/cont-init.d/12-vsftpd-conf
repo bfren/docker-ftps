@@ -8,7 +8,6 @@ set -euo pipefail
 #======================================================================================================================
 
 _echo "Writing VSFTPD config..."
-gomplate \
-    -o /etc/vsftpd/vsftpd.conf \
-    -f /etc/templates/vsftpd.conf.tmpl
+esh -o /etc/vsftpd/vsftpd.conf \
+    /etc/templates/vsftpd.conf.esh
 _done

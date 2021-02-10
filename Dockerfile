@@ -17,12 +17,10 @@ ENV \
     SSL_BITS=4096
 
 COPY ./VSFTPD_BUILD /tmp/VSFTPD_BUILD
-ARG GOMPLATE_VERSION=3.8.0-r0
 RUN export VSFTPD_VERSION=$(cat /tmp/VSFTPD_BUILD) \
     && echo "VSFTPD v${VSFTPD_VERSION}" \
     && apk -U upgrade \
     && apk add \
-        gomplate=${GOMPLATE_VERSION} \
         openssl \
         vsftpd=${VSFTPD_VERSION} \
     && rm -rf /var/cache/apk/* /etc/ssl/private
