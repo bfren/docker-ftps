@@ -18,3 +18,7 @@ HOME=/files
 _echo "Creating user ${USER}..."
 echo -e "${PASS}\n${PASS}" | adduser -h ${HOME} -s /sbin/nologin -u ${UID} ${USER}
 _done
+
+_echo "Ensuring user owns ${HOME}..."
+chown ${USER}:${USER} ${HOME}
+_done
