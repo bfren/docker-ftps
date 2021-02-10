@@ -7,4 +7,4 @@ set -euo pipefail
 # Forward VSFTPD error log to Docker
 #======================================================================================================================
 
-_forward "vsftpd-log" "/var/log/vsftpd.log"
+bcg-forward "vsftpd-log" "/var/log/vsftpd.log"

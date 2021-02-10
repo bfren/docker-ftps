@@ -7,18 +7,18 @@ set -euo pipefail
 # Create FTP user
 #======================================================================================================================
 
-[[ -z "${FTP_USER-}" ]] && _error "FTP_USER is required."
-[[ -z "${FTP_PASS-}" ]] && _error "FTP_PASS is required."
+[[ -z "${FTP_USER-}" ]] && bcg-error "FTP_USER is required."
+[[ -z "${FTP_PASS-}" ]] && bcg-error "FTP_PASS is required."
 
 USER=${FTP_USER}
 PASS=${FTP_PASS}
 UID=${FTP_UID:-1000}
 HOME=/files
 
-_echo "Creating user ${USER}..."
+bcg-echo "Creating user ${USER}..."
 echo -e "${PASS}\n${PASS}" | adduser -h ${HOME} -s /sbin/nologin -u ${UID} ${USER}
-_done
+bcg-done
 
-_echo "Ensuring user owns ${HOME}..."
+bcg-echo "Ensuring user owns ${HOME}..."
 chown ${USER}:${USER} ${HOME}
-_done
+bcg-done
