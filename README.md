@@ -4,11 +4,12 @@
 
 [Docker Repository](https://hub.docker.com/r/bcgdesign/ftps) - [bcg|design ecosystem](https://github.com/bencgreen/docker)
 
-VSFTPD installed and running in passive mode, with TLS support (self-signed certificates).
+Comes with vsftpd installed and running in passive mode, with TLS support (self-signed certificates).  
 
 ## Contents
 
 * [Ports](#ports)
+* [Volumes](#volumes)
 * [Environment Variables](#environment-variables)
 * [Authors / Licence / Copyright](#authors)
 
@@ -17,6 +18,13 @@ VSFTPD installed and running in passive mode, with TLS support (self-signed cert
 * 21
 * 990
 * 18700-18710
+
+## Volumes
+
+| Volume   | Purpose                                                                                                                                                |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `/files` | Contains the files that can be accessed / written.                                                                                                     |
+| `/ssl`   | Stores (self-signed) SSL certificates - if you symlink a PEM file called `server.pem` here with a valid SSL certificate, `vsftpd` will use it instead. |
 
 ## Environment Variables
 
