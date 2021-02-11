@@ -1,6 +1,6 @@
 # Docker FTPS
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/bencgreen/docker-ftps) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bencgreen/docker-ftps/build?label=github) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/bcgdesign/ftps?label=docker) ![Docker Pulls](https://img.shields.io/docker/pulls/bcgdesign/ftps?label=pulls) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/bcgdesign/ftps/latest?label=size)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/bencgreen/docker-ftps) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bencgreen/docker-ftps/build-dev?label=github) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/bcgdesign/ftps?label=docker) ![Docker Pulls](https://img.shields.io/docker/pulls/bcgdesign/ftps?label=pulls) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/bcgdesign/ftps/latest?label=size)
 
 [Docker Repository](https://hub.docker.com/r/bcgdesign/ftps) - [bcg|design ecosystem](https://github.com/bencgreen/docker)
 
