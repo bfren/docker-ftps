@@ -8,7 +8,7 @@ set -euo pipefail
 #======================================================================================================================
 
 CONF=/etc/vsftpd/vsftpd.conf
-[[ ! -f ${CONF} ]] && bcg-error "VSFTPD configuration file not found."
+[[ ! -f ${CONF} ]] && bcg-error "vsftpd configuration file not found."
 
-bcg-echo "Starting VSFTPD"
+bcg-echo "Starting vsftpd"
 vsftpd ${CONF}

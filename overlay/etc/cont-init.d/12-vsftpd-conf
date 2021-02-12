@@ -9,7 +9,7 @@ set -euo pipefail
 
 [[ -z "${EXTERNAL_URI-}" ]] && [[ -z "${EXTERNAL_IP-}" ]] && bcg-error
 
-bcg-echo "Writing VSFTPD config..."
+bcg-echo "Writing vsftpd config..."
 esh -o /etc/vsftpd/vsftpd.conf \
     /etc/templates/vsftpd.conf.esh
 bcg-done

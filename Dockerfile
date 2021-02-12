@@ -18,7 +18,7 @@ ENV \
 
 COPY ./VSFTPD_BUILD /tmp/VSFTPD_BUILD
 RUN export VSFTPD_VERSION=$(cat /tmp/VSFTPD_BUILD) \
-    && echo "VSFTPD v${VSFTPD_VERSION}" \
+    && echo "vsftpd v${VSFTPD_VERSION}" \
     && apk -U upgrade \
     && apk add \
         openssl \
