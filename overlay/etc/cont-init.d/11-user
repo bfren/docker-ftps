@@ -8,12 +8,12 @@ export BCG_E=`basename ${0}`
 # Create FTP user.
 #======================================================================================================================
 
-[[ -z "${FTP_USER-}" ]] && bcg-error "FTP_USER is required."
-[[ -z "${FTP_PASS-}" ]] && bcg-error "FTP_PASS is required."
+[[ -z "${FTPS_USER-}" ]] && bcg-error "FTPS_USER is required."
+[[ -z "${FTPS_PASS-}" ]] && bcg-error "FTPS_PASS is required."
 
-USER=${FTP_USER}
-PASS=${FTP_PASS}
-UID=${FTP_UID:-1000}
+USER=${FTPS_USER}
+PASS=${FTPS_PASS}
+UID=${FTPS_UID:-1000}
 HOME=/files
 
 bcg-echo "Creating user ${USER}..."

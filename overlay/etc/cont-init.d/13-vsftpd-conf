@@ -8,9 +8,15 @@ export BCG_E=`basename ${0}`
 # Create FTP configuration.
 #======================================================================================================================
 
-[[ -z "${EXTERNAL_URI-}" ]] && [[ -z "${EXTERNAL_IP-}" ]] && bcg-error "You must specify either an external URI or IP."
+if [ -z "${FTPS_USER-}" ] ; then
+    bcg-error "You must provide the FTPS user."
+fi
+
+if [ -z "${FTPS_EXTERNAL_URI-}" ] && [ -z "${FTPS_EXTERNAL_IP-}" ] ; then
+    bcg-error "You must provide either an external URI or IP."
+fi
 
 bcg-echo "Writing vsftpd config..."
-esh -o ${VSFTPD_CONF} \
+esh -o ${FTPS_CONF} \
     ${TEMPLATES}/vsftpd.conf.esh
 bcg-done

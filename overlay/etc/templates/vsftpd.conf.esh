@@ -40,7 +40,7 @@ local_umask=077
 # go into a certain directory.
 dirmessage_enable=YES
 #
-# The target log file can be vsftpd_log_file or xferlog_file.
+# The target log file can be FTPS_LOG_file or xferlog_file.
 # This depends on setting xferlog_std_format parameter
 xferlog_enable=YES
 #
@@ -57,8 +57,8 @@ xferlog_enable=YES
 # WARNING - changing this filename affects /etc/logrotate.d/vsftpd.log
 #xferlog_file=/var/log/xferlog
 #
-# Switches between logging into vsftpd_log_file and xferlog_file files.
-# NO writes to vsftpd_log_file, YES to xferlog_file
+# Switches between logging into FTPS_LOG_file and xferlog_file files.
+# NO writes to FTPS_LOG_file, YES to xferlog_file
 #xferlog_std_format=YES
 #
 # You may change the default value for timing out an idle session.
@@ -69,7 +69,7 @@ xferlog_enable=YES
 #
 # It is recommended that you define on your system a unique user which the
 # ftp server can use as a totally isolated and unprivileged user.
-nopriv_user=<%= ${FTP_USER} %>
+nopriv_user=<%= ${FTPS_USER} %>
 #
 # Enable this and the server will recognise asynchronous ABOR requests. Not
 # recommended for security (the code is non-trivial). Not enabling it,
@@ -88,7 +88,7 @@ nopriv_user=<%= ${FTP_USER} %>
 #ascii_download_enable=YES
 #
 # You may fully customise the login banner string:
-ftpd_banner=Welcome to bcg FTPS server
+ftpd_banner=<%= ${FTPS_WELCOME}
 #
 # You may specify a file of disallowed anonymous e-mail addresses. Apparently
 # useful for combatting certain DoS attacks.
@@ -131,8 +131,8 @@ listen=YES
 # and key files. We actually combined both pieces of
 # information into a single file, so we will point
 # both options to the same file:
-rsa_cert_file=<%= ${VSFTPD_SSL_CERT} %>
-rsa_private_key_file=<%= ${VSFTPD_SSL_CERT} %>
+rsa_cert_file=<%= ${FTPS_SSL_CERT} %>
+rsa_private_key_file=<%= ${FTPS_SSL_CERT} %>
 
 # Next, we need enable the use of these files and
 # disable anonymous users. We should also force the
@@ -159,11 +159,11 @@ strict_ssl_read_eof=NO
 
 # external ip here
 # if you are in a private network and expect to be visited by the outside
-<% if [ -n "${EXTERNAL_URI}" ] ; then %>
-pasv_address=<%= ${EXTERNAL_URI} %>
+<% if [ -n "${FTPS_EXTERNAL_URI}" ] ; then %>
+pasv_address=<%= ${FTPS_EXTERNAL_URI} %>
 pasv_addr_resolve=YES
 <% else %>
-pasv_address=<%= ${EXTERNAL_IP} %>
+pasv_address=<%= ${FTPS_EXTERNAL_IP} %>
 <% fi %>
 
 pasv_enable=YES
