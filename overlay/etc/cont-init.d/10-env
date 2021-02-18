@@ -1,11 +1,13 @@
 #!/usr/bin/with-contenv sh
 
 set -euo pipefail
-export BCG_E="vsftpd/$(basename ${0})"
+export BCG_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Use base executable to terminate all services.
+# Set environment variables.
 #======================================================================================================================
 
-bcg-svc-terminate
+bcg-env "VSFTPD_CONF" "/etc/vsftpd/vsftpd.conf"
+bcg-env "VSFTPD_LOG" "/var/log/vsftpd.log"
+bcg-env "VSFTPD_SSL_CERT" "/ssl/vsftpd.pem"

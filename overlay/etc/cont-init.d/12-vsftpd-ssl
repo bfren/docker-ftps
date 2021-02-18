@@ -1,14 +1,14 @@
 #!/usr/bin/with-contenv sh
 
 set -euo pipefail
+export BCG_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Create FTP configuration
+# Create FTP configuration.
 #======================================================================================================================
 
-CERT=/ssl/vsftpd.pem
-if [ -e ${CERT} ] ; then
+if [ -f ${VSFTPD_SSL_CERT} ] ; then
     bcg-echo "Using existing SSL certificate."
     exit 0
 fi
@@ -19,6 +19,7 @@ openssl req -newkey rsa:${SSL_BITS} \
     -sha256 \
     -days 3650 \
     -nodes \
-    -out ${CERT} \
-    -keyout ${CERT} \
+    -out ${VSFTPD_SSL_CERT} \
+    -keyout ${VSFTPD_SSL_CERT} \
     -subj "/C=NA/ST=NA/L=NA/O=NA/OU=NA/CN=vsftpd"
+bcg-done

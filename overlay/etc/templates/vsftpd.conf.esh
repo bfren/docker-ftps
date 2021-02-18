@@ -131,8 +131,8 @@ listen=YES
 # and key files. We actually combined both pieces of
 # information into a single file, so we will point
 # both options to the same file:
-rsa_cert_file=/etc/ssl/private/vsftpd.pem
-rsa_private_key_file=/etc/ssl/private/vsftpd.pem
+rsa_cert_file=<%= ${VSFTPD_SSL_CERT} %>
+rsa_private_key_file=<%= ${VSFTPD_SSL_CERT} %>
 
 # Next, we need enable the use of these files and
 # disable anonymous users. We should also force the

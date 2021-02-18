@@ -1,15 +1,16 @@
 #!/usr/bin/with-contenv sh
 
 set -euo pipefail
+export BCG_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Create FTP configuration
+# Create FTP configuration.
 #======================================================================================================================
 
-[[ -z "${EXTERNAL_URI-}" ]] && [[ -z "${EXTERNAL_IP-}" ]] && bcg-error
+[[ -z "${EXTERNAL_URI-}" ]] && [[ -z "${EXTERNAL_IP-}" ]] && bcg-error "You must specify either an external URI or IP."
 
 bcg-echo "Writing vsftpd config..."
-esh -o /etc/vsftpd/vsftpd.conf \
-    /etc/templates/vsftpd.conf.esh
+esh -o ${VSFTPD_CONF} \
+    ${TEMPLATES}/vsftpd.conf.esh
 bcg-done

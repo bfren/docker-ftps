@@ -1,10 +1,11 @@
 #!/usr/bin/with-contenv sh
 
 set -euo pipefail
+export BCG_E="vsftpd-log/$(basename ${0})"
 
 
 #======================================================================================================================
-# Forward VSFTPD error log to Docker
+# Forward vsftpd error log to Docker.
 #======================================================================================================================
 
-bcg-forward "vsftpd-log" "/var/log/vsftpd.log"
+bcg-forward "vsftpd-log" "${VSFTPD_LOG}"
