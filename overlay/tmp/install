@@ -37,4 +37,4 @@ rm -rf /etc/ssl/private
 # Link /etc/ssl/private to /ssl.
 #======================================================================================================================
 
-RUN ln -s /ssl /etc/ssl/private
+ln -s /ssl /etc/ssl/private
