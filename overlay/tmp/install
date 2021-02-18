@@ -29,8 +29,8 @@ bcg-done
 # Cleanup.
 #======================================================================================================================
 
-bcg-debug "Cleaning up default SSL files."
-rm -rf /etc/ssl/private
+bcg-debug "Cleaning up default vsftpd and SSL files."
+rm -rf /etc/vsftpd/* /etc/ssl/private
 
 
 #======================================================================================================================
