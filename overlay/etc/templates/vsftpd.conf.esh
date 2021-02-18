@@ -88,7 +88,7 @@ nopriv_user=<%= ${FTPS_USER} %>
 #ascii_download_enable=YES
 #
 # You may fully customise the login banner string:
-ftpd_banner=<%= ${FTPS_WELCOME}
+ftpd_banner=<%= ${FTPS_WELCOME} %>
 #
 # You may specify a file of disallowed anonymous e-mail addresses. Apparently
 # useful for combatting certain DoS attacks.
