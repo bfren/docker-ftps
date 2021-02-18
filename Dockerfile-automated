@@ -16,18 +16,9 @@ ENV \
     # the number of bits for the SSL certificate
     SSL_BITS=4096
 
-COPY ./VSFTPD_BUILD /tmp/VSFTPD_BUILD
-RUN export VSFTPD_VERSION=$(cat /tmp/VSFTPD_BUILD) \
-    && echo "vsftpd v${VSFTPD_VERSION}" \
-    && apk -U upgrade \
-    && apk add \
-        openssl \
-        vsftpd=${VSFTPD_VERSION} \
-    && rm -rf /var/cache/apk/* /etc/ssl/private
-
 COPY ./overlay /
+COPY ./VSFTPD_BUILD /tmp/VERSION
 
-RUN ln -s /ssl /etc/ssl/private
+RUN bcg-install
+
 VOLUME [ "/files", "/ssl" ]
-
-HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=5 CMD [ "healthcheck" ]
