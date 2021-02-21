@@ -173,3 +173,7 @@ port_enable=YES
 
 # ref: https://www.benscobie.com/fixing-500-oops-vsftpd-refusing-to-run-with-writable-root-inside-chroot/
 allow_writeable_chroot=YES
+
+# ref: https://github.com/microsoft/WSL/issues/5412#issuecomment-644330450
+seccomp_sandbox=NO
+isolate_network=NO
