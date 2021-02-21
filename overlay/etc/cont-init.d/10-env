@@ -1,14 +1,17 @@
 #!/usr/bin/with-contenv sh
 
 set -euo pipefail
-export BCG_E="${PWD##*/}/$(basename ${0})"
+export BCG_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Run vsftpd server.
+# Set environment variables.
 #======================================================================================================================
 
-[[ ! -f ${FTPS_VSFTPD_CONF} ]] && bcg-error "vsftpd configuration file not found."
+bcg-env "FTPS_FILES" "/files"
 
-bcg-echo "Starting vsftpd."
-vsftpd ${FTPS_VSFTPD_CONF}
+bcg-env "FTPS_VSFTPD_CONF" "/etc/vsftpd/vsftpd.conf"
+bcg-env "FTPS_VSFTPD_LOG_FILE" "/var/log/vsftpd.log"
+bcg-env "FTPS_SSL_CERT" "/ssl/vsftpd.pem"
+
+bcg-env "FTPS_LFTP_CONF" "/etc/lftp.conf"

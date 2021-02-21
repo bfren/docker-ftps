@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv sh
+
+set -euo pipefail
+export BCG_E=`basename ${0}`
+
+
+#======================================================================================================================
+# Attempt to connect to the local FTP server.
+#======================================================================================================================
+
+IP="127.0.0.1"
+bcg-debug "Connecting to FTP server ${IP}."
+
+LFILE=$(mktemp -t healthcheck.XXXXXX || bcg-error "Unable to create temporary file.")
+RFILE=${FTPS_FILES}/`basename ${LFILE}`
+CHECK=$(lftp -c "open -u ${FTPS_USER},${FTPS_PASS} ${IP} && put -E ${LFILE} && echo 1" || true)
+
+rm -f ${LFILE} ${RFILE}
+
+[[ "${CHECK}" = "1" ]] && exit 0
+exit 1

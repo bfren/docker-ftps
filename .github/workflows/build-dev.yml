@@ -2,10 +2,15 @@ name: build-dev
 
 on:
   push:
-    branches:
-      - '**'
+    branches-ignore:
+      - 'main'
     tags-ignore:
       - '**'
+    paths:
+      - '.github/workflows/build-dev.yml'
+      - 'overlay/**'
+      - 'Dockerfile'
+      - 'VERSION'
 
 jobs:
   main:
@@ -14,6 +19,12 @@ jobs:
       -
         name: Checkout code
         uses: actions/checkout@v2
+      -
+        name: Read image version
+        uses: bencgreen/read-file-action@v1
+        with:
+          path: ./VERSION
+        id: version
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -35,6 +46,7 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
             bcgdesign/ftps:dev
+            bcgdesign/ftps:${{ steps.version.outputs.content }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

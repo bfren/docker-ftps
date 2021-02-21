@@ -4,12 +4,7 @@ set -euo pipefail
 
 
 #======================================================================================================================
-# Create FTP configuration
+# Show helpful log message.
 #======================================================================================================================
 
-[[ -z "${EXTERNAL_URI-}" ]] && [[ -z "${EXTERNAL_IP-}" ]] && bcg-error
-
-bcg-echo "Writing vsftpd config..."
-esh -o /etc/vsftpd/vsftpd.conf \
-    /etc/templates/vsftpd.conf.esh
-bcg-done
+bcg-svc-finish -s ${PWD##*/}

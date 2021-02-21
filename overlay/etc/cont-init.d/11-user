@@ -1,19 +1,20 @@
 #!/usr/bin/with-contenv sh
 
 set -euo pipefail
+export BCG_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Create FTP user
+# Create FTP user.
 #======================================================================================================================
 
-[[ -z "${FTP_USER-}" ]] && bcg-error "FTP_USER is required."
-[[ -z "${FTP_PASS-}" ]] && bcg-error "FTP_PASS is required."
+[[ -z "${FTPS_USER-}" ]] && bcg-error "FTPS_USER is required."
+[[ -z "${FTPS_PASS-}" ]] && bcg-error "FTPS_PASS is required."
 
-USER=${FTP_USER}
-PASS=${FTP_PASS}
-UID=${FTP_UID:-1000}
-HOME=/files
+USER=${FTPS_USER}
+PASS=${FTPS_PASS}
+UID=${FTPS_UID:-1000}
+HOME=${FTPS_FILES}
 
 bcg-echo "Creating user ${USER}..."
 echo -e "${PASS}\n${PASS}" | adduser -h ${HOME} -s /sbin/nologin -u ${UID} ${USER}
