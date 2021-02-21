@@ -1,11 +1,10 @@
 #!/usr/bin/with-contenv sh
 
 set -euo pipefail
-export BCG_E="vsftpd/$(basename ${0})"
 
 
 #======================================================================================================================
-# Use base executable to terminate all services.
+# Show helpful log message.
 #======================================================================================================================
 
-bcg-svc-terminate
+bcg-svc-finish -s ${PWD##*/} -t
