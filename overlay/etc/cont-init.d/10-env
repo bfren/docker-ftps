@@ -9,5 +9,5 @@ export BCG_E=`basename ${0}`
 #======================================================================================================================
 
 bcg-env "FTPS_CONF" "/etc/vsftpd/vsftpd.conf"
-bcg-env "FTPS_LOG" "/var/log/vsftpd.log"
+bcg-env "FTPS_LOG_FILE" "/var/log/vsftpd.log"
 bcg-env "FTPS_SSL_CERT" "/ssl/vsftpd.pem"

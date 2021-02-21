@@ -40,7 +40,7 @@ local_umask=077
 # go into a certain directory.
 dirmessage_enable=YES
 #
-# The target log file can be FTPS_LOG_file or xferlog_file.
+# The target log file can be vsftpd_log_file or xferlog_file.
 # This depends on setting xferlog_std_format parameter
 xferlog_enable=YES
 #
@@ -55,10 +55,10 @@ xferlog_enable=YES
 #
 # The name of log file when xferlog_enable=YES and xferlog_std_format=YES
 # WARNING - changing this filename affects /etc/logrotate.d/vsftpd.log
-#xferlog_file=/var/log/xferlog
+xferlog_file=<%= ${FTPS_LOG_FILE} %>
 #
-# Switches between logging into FTPS_LOG_file and xferlog_file files.
-# NO writes to FTPS_LOG_file, YES to xferlog_file
+# Switches between logging into vsftpd_log_file and xferlog_file files.
+# NO writes to vsftpd_log_file, YES to xferlog_file
 #xferlog_std_format=YES
 #
 # You may change the default value for timing out an idle session.
