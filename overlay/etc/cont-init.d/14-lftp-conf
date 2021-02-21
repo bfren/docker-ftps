@@ -10,5 +10,5 @@ export BCG_E=`basename ${0}`
 
 bcg-echo "Writing lftp config..."
 esh -o ${FTPS_LFTP_CONF} \
-    ${TEMPLATES}/lftp.conf.esh
+    ${BCG_TEMPLATES}/lftp.conf.esh
 bcg-done

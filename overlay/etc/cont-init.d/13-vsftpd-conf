@@ -18,5 +18,5 @@ fi
 
 bcg-echo "Writing vsftpd config..."
 esh -o ${FTPS_VSFTPD_CONF} \
-    ${TEMPLATES}/vsftpd.conf.esh
+    ${BCG_TEMPLATES}/vsftpd.conf.esh
 bcg-done
