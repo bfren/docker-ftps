@@ -5,11 +5,10 @@ export BCG_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Set environment variables.
+# Create lftp configuration.
 #======================================================================================================================
 
-bcg-env "FTPS_VSFTPD_CONF" "/etc/vsftpd/vsftpd.conf"
-bcg-env "FTPS_VSFTPD_LOG_FILE" "/var/log/vsftpd.log"
-bcg-env "FTPS_SSL_CERT" "/ssl/vsftpd.pem"
-
-bcg-env "FTPS_LFTP_CONF" "/etc/lftp.conf"
+bcg-echo "Writing lftp config..."
+esh -o ${FTPS_LFTP_CONF} \
+    ${TEMPLATES}/lftp.conf.esh
+bcg-done

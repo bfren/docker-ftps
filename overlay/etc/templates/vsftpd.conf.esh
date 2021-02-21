@@ -55,7 +55,7 @@ xferlog_enable=YES
 #
 # The name of log file when xferlog_enable=YES and xferlog_std_format=YES
 # WARNING - changing this filename affects /etc/logrotate.d/vsftpd.log
-xferlog_file=<%= ${FTPS_LOG_FILE} %>
+xferlog_file=<%= ${FTPS_VSFTPD_LOG_FILE} %>
 #
 # Switches between logging into vsftpd_log_file and xferlog_file files.
 # NO writes to vsftpd_log_file, YES to xferlog_file

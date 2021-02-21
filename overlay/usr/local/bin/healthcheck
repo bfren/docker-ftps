@@ -5,11 +5,13 @@ export BCG_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Set environment variables.
+# Attempt to connect to the local FTP server.
 #======================================================================================================================
 
-bcg-env "FTPS_VSFTPD_CONF" "/etc/vsftpd/vsftpd.conf"
-bcg-env "FTPS_VSFTPD_LOG_FILE" "/var/log/vsftpd.log"
-bcg-env "FTPS_SSL_CERT" "/ssl/vsftpd.pem"
+bcg-debug "Connecting to FTP server 127.0.0.1."
 
-bcg-env "FTPS_LFTP_CONF" "/etc/lftp.conf"
+FILE=`mktemp` || exit 1
+CHECK=$(lftp -c "open -u ${FTPS_USER},${FTPS_PASS} 128.0.0.1; put -e -E ${FILE} && echo 1")
+
+[[ "${CHECK}" = "1" ]] && exit 0
+exit 1

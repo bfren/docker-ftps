@@ -20,6 +20,7 @@ bcg-debug "vsftpd version ${VERSION}."
 
 bcg-echo "Installing vsftpd v${VERSION}..."
 apk add --no-cache \
+    lftp \
     openssl \
     vsftpd=${VERSION}
 bcg-done

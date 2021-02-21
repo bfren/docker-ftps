@@ -5,7 +5,7 @@ export BCG_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Create FTP configuration.
+# Create vsftp configuration.
 #======================================================================================================================
 
 if [ -z "${FTPS_USER-}" ] ; then
@@ -17,6 +17,6 @@ if [ -z "${FTPS_EXTERNAL_URI-}" ] && [ -z "${FTPS_EXTERNAL_IP-}" ] ; then
 fi
 
 bcg-echo "Writing vsftpd config..."
-esh -o ${FTPS_CONF} \
+esh -o ${FTPS_VSFTPD_CONF} \
     ${TEMPLATES}/vsftpd.conf.esh
 bcg-done
