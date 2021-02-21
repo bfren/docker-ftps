@@ -14,7 +14,7 @@ export BCG_E=`basename ${0}`
 USER=${FTPS_USER}
 PASS=${FTPS_PASS}
 UID=${FTPS_UID:-1000}
-HOME=/files
+HOME=${FTPS_FILES}
 
 bcg-echo "Creating user ${USER}..."
 echo -e "${PASS}\n${PASS}" | adduser -h ${HOME} -s /sbin/nologin -u ${UID} ${USER}

@@ -12,7 +12,10 @@ IP="127.0.0.1"
 bcg-debug "Connecting to FTP server ${IP}."
 
 FILE=$(mktemp || bcg-error "Unable to create temporary file.")
-CHECK=$(lftp -c "open -u ${FTPS_USER},${FTPS_PASS} ${IP} && put -e -E ${FILE} && echo 1")
+TEMP=healthcheck.tmp
+CHECK=$(lftp -c "open -u ${FTPS_USER},${FTPS_PASS} ${IP} && put -E -o ${TEMP} ${FILE} && echo 1")
+
+rm ${FTPS_FILES}/${TEMP}
 
 [[ "${CHECK}" = "1" ]] && exit 0
 exit 1
