@@ -1,4 +1,4 @@
-name: build-main
+name: publish
 
 on:
   push:
@@ -13,7 +13,7 @@ on:
       - 'VERSION'
 
 jobs:
-  main:
+  publish:
     runs-on: ubuntu-latest
     steps:
       -

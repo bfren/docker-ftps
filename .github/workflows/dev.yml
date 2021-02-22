@@ -1,4 +1,4 @@
-name: build-dev
+name: dev
 
 on:
   push:
@@ -7,13 +7,19 @@ on:
     tags-ignore:
       - '**'
     paths:
-      - '.github/workflows/build-dev.yml'
+      - '.github/workflows/dev.yml'
       - 'overlay/**'
       - 'Dockerfile'
       - 'VERSION'
 
 jobs:
-  main:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout code
+        uses: actions/checkout@v2
+  build:
     runs-on: ubuntu-latest
     steps:
       -
@@ -46,7 +52,7 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
             bcgdesign/ftps:dev
-            bcgdesign/ftps:${{ steps.version.outputs.content }}
+            bcgdesign/ftps:${{ steps.version.outputs.content }}-beta
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
