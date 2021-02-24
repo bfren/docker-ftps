@@ -1,4 +1,4 @@
-name: publish
+name: main
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     tags-ignore:
       - '**'
     paths:
-      - '.github/workflows/publish.yml'
+      - '.github/workflows/main.yml'
       - 'overlay/**'
       - 'Dockerfile'
       - 'VERSION'
