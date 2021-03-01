@@ -65,11 +65,11 @@ jobs:
           tags: |
             bcgdesign/ftps:latest
             bcgdesign/ftps:${{ steps.version.outputs.content }}
-            bcgdesign/ftps:vsftpd-${{ steps.vsftpd_major.outputs.content }}
-            bcgdesign/ftps:vsftpd-${{ steps.vsftpd_major.outputs.content }}-${{ steps.version.outputs.content }}
-            bcgdesign/ftps:vsftpd-${{ steps.vsftpd_minor.outputs.content }}
-            bcgdesign/ftps:vsftpd-${{ steps.vsftpd_minor.outputs.content }}-${{ steps.version.outputs.content }}
-            bcgdesign/ftps:vsftpd-${{ steps.vsftpd_revision.outputs.content }}
+            bcgdesign/ftps:vsftpd${{ steps.vsftpd_major.outputs.content }}
+            bcgdesign/ftps:vsftpd${{ steps.vsftpd_major.outputs.content }}-${{ steps.version.outputs.content }}
+            bcgdesign/ftps:vsftpd${{ steps.vsftpd_minor.outputs.content }}
+            bcgdesign/ftps:vsftpd${{ steps.vsftpd_minor.outputs.content }}-${{ steps.version.outputs.content }}
+            bcgdesign/ftps:vsftpd${{ steps.vsftpd_revision.outputs.content }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
