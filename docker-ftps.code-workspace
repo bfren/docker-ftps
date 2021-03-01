@@ -5,6 +5,7 @@
 		}
 	],
 	"settings": {
+		"files.eol": "\n",
 		"files.trimTrailingWhitespace": true
 	}
 }
