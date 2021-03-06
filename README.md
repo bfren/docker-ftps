@@ -43,7 +43,7 @@ Comes with vsftpd installed and running in passive mode, with TLS support (self-
 
 ## License
 
-> [MIT](https://bcg.mit-license.org/2020)
+> [MIT](https://mit.bcgdesign.com/2020)
 
 ## Copyright
 
