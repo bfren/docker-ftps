@@ -6,11 +6,6 @@ on:
       - 'main'
     tags-ignore:
       - '**'
-    paths:
-      - '.github/workflows/dev.yml'
-      - 'overlay/**'
-      - 'Dockerfile'
-      - 'VERSION'
 
 jobs:
   test:
