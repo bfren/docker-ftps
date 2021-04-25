@@ -1,4 +1,4 @@
-FROM bcgdesign/alpine-s6:alpine3.13-2.1.2
+FROM bcgdesign/alpine-s6:alpine3.13-2.1.3
 
 LABEL maintainer="Ben Green <ben@bcgdesign.com>" \
     org.label-schema.name="FTPS" \
