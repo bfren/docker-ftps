@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv sh
 
 set -euo pipefail
-export BCG_E=`basename ${0}`
+export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
@@ -9,14 +9,14 @@ export BCG_E=`basename ${0}`
 #======================================================================================================================
 
 if [ -z "${FTPS_USER-}" ] ; then
-    bcg-error "You must provide the FTPS user."
+    bf-error "You must provide the FTPS user."
 fi
 
 if [ -z "${FTPS_EXTERNAL_URI-}" ] && [ -z "${FTPS_EXTERNAL_IP-}" ] ; then
-    bcg-error "You must provide either an external URI or IP."
+    bf-error "You must provide either an external URI or IP."
 fi
 
-bcg-echo "Writing vsftpd config..."
+bf-echo "Writing vsftpd config..."
 esh -o ${FTPS_VSFTPD_CONF} \
-    ${BCG_TEMPLATES}/vsftpd.conf.esh
-bcg-done
+    ${BF_TEMPLATES}/vsftpd.conf.esh
+bf-done

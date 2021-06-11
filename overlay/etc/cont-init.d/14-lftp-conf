@@ -1,14 +1,14 @@
 #!/usr/bin/with-contenv sh
 
 set -euo pipefail
-export BCG_E=`basename ${0}`
+export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
 # Create lftp configuration.
 #======================================================================================================================
 
-bcg-echo "Writing lftp config..."
+bf-echo "Writing lftp config..."
 esh -o ${FTPS_LFTP_CONF} \
-    ${BCG_TEMPLATES}/lftp.conf.esh
-bcg-done
+    ${BF_TEMPLATES}/lftp.conf.esh
+bf-done

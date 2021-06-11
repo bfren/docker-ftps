@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -euo pipefail
-export BCG_E=`basename ${0}`
+export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
@@ -11,26 +11,26 @@ export BCG_E=`basename ${0}`
 cd /tmp
 
 VERSION=$(cat VERSION)
-bcg-debug "vsftpd version ${VERSION}."
+bf-debug "vsftpd version ${VERSION}."
 
 
 #======================================================================================================================
 # Install vsftpd and dependencies.
 #======================================================================================================================
 
-bcg-echo "Installing vsftpd v${VERSION}..."
+bf-echo "Installing vsftpd v${VERSION}..."
 apk add --no-cache \
     lftp \
     openssl \
     vsftpd=${VERSION}
-bcg-done
+bf-done
 
 
 #======================================================================================================================
 # Cleanup.
 #======================================================================================================================
 
-bcg-debug "Cleaning up default vsftpd and SSL files."
+bf-debug "Cleaning up default vsftpd and SSL files."
 rm -rf /etc/vsftpd/* /etc/ssl/private
 
 
@@ -38,7 +38,7 @@ rm -rf /etc/vsftpd/* /etc/ssl/private
 # Create and link ftps directories.
 #======================================================================================================================
 
-bcg-debug "Creating and linking ftps directories."
+bf-debug "Creating and linking ftps directories."
 
 mkdir /files
 

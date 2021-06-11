@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv sh
 
 set -euo pipefail
-export BCG_E=`basename ${0}`
+export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
@@ -9,11 +9,11 @@ export BCG_E=`basename ${0}`
 #======================================================================================================================
 
 if [ -f ${FTPS_SSL_CERT} ] ; then
-    bcg-echo "Using existing SSL certificate."
+    bf-echo "Using existing SSL certificate."
     exit 0
 fi
 
-bcg-echo "Creating SSL certificate and key..."
+bf-echo "Creating SSL certificate and key..."
 openssl req -newkey rsa:${FTPS_SSL_BITS} \
     -x509 \
     -sha256 \
@@ -22,4 +22,4 @@ openssl req -newkey rsa:${FTPS_SSL_BITS} \
     -out ${FTPS_SSL_CERT} \
     -keyout ${FTPS_SSL_CERT} \
     -subj "/C=NA/ST=NA/L=NA/O=NA/OU=NA/CN=vsftpd"
-bcg-done
+bf-done

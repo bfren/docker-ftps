@@ -1,10 +1,4 @@
-FROM bcgdesign/alpine-s6:alpine3.13-2.1.3
-
-LABEL maintainer="Ben Green <ben@bcgdesign.com>" \
-    org.label-schema.name="FTPS" \
-    org.label-schema.version="latest" \
-    org.label-schema.vendor="Ben Green" \
-    org.label-schema.schema-version="1.0"
+FROM bfren/alpine-s6:alpine3.13-2.2.0
 
 EXPOSE 21 990 18700-18710
 
@@ -25,6 +19,6 @@ ENV \
 COPY ./overlay /
 COPY ./VSFTPD_BUILD /tmp/VERSION
 
-RUN bcg-install
+RUN bf-install
 
 VOLUME [ "/files", "/ssl" ]
