@@ -47,8 +47,8 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
-            bcgdesign/ftps:dev
-            bcgdesign/ftps:${{ steps.version.outputs.content }}-beta
+            bfren/ftps:dev
+            bfren/ftps:${{ steps.version.outputs.content }}-beta
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

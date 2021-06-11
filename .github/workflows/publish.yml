@@ -56,13 +56,13 @@ jobs:
           push: true
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
-            bcgdesign/ftps:latest
-            bcgdesign/ftps:${{ steps.version.outputs.content }}
-            bcgdesign/ftps:vsftpd${{ steps.vsftpd_major.outputs.content }}
-            bcgdesign/ftps:vsftpd${{ steps.vsftpd_major.outputs.content }}-${{ steps.version.outputs.content }}
-            bcgdesign/ftps:vsftpd${{ steps.vsftpd_minor.outputs.content }}
-            bcgdesign/ftps:vsftpd${{ steps.vsftpd_minor.outputs.content }}-${{ steps.version.outputs.content }}
-            bcgdesign/ftps:vsftpd${{ steps.vsftpd_revision.outputs.content }}
+            bfren/ftps:latest
+            bfren/ftps:${{ steps.version.outputs.content }}
+            bfren/ftps:vsftpd${{ steps.vsftpd_major.outputs.content }}
+            bfren/ftps:vsftpd${{ steps.vsftpd_major.outputs.content }}-${{ steps.version.outputs.content }}
+            bfren/ftps:vsftpd${{ steps.vsftpd_minor.outputs.content }}
+            bfren/ftps:vsftpd${{ steps.vsftpd_minor.outputs.content }}-${{ steps.version.outputs.content }}
+            bfren/ftps:vsftpd${{ steps.vsftpd_revision.outputs.content }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
