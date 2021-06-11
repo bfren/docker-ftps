@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv sh
 
 set -euo pipefail
-export BCG_E=`basename ${0}`
+export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
@@ -18,5 +18,5 @@ fi
 
 bf-echo "Writing vsftpd config..."
 esh -o ${FTPS_VSFTPD_CONF} \
-    ${BCG_TEMPLATES}/vsftpd.conf.esh
+    ${BF_TEMPLATES}/vsftpd.conf.esh
 bf-done
