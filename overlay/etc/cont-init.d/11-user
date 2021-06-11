@@ -8,18 +8,18 @@ export BCG_E=`basename ${0}`
 # Create FTP user.
 #======================================================================================================================
 
-[[ -z "${FTPS_USER-}" ]] && bcg-error "FTPS_USER is required."
-[[ -z "${FTPS_PASS-}" ]] && bcg-error "FTPS_PASS is required."
+[[ -z "${FTPS_USER-}" ]] && bf-error "FTPS_USER is required."
+[[ -z "${FTPS_PASS-}" ]] && bf-error "FTPS_PASS is required."
 
 USER=${FTPS_USER}
 PASS=${FTPS_PASS}
 UID=${FTPS_UID:-1000}
 HOME=${FTPS_FILES}
 
-bcg-echo "Creating user ${USER}..."
+bf-echo "Creating user ${USER}..."
 echo -e "${PASS}\n${PASS}" | adduser -h ${HOME} -s /sbin/nologin -u ${UID} ${USER}
-bcg-done
+bf-done
 
-bcg-echo "Ensuring user owns ${HOME}..."
+bf-echo "Ensuring user owns ${HOME}..."
 chown ${USER}:${USER} ${HOME}
-bcg-done
+bf-done

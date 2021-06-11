@@ -25,6 +25,6 @@ ENV \
 COPY ./overlay /
 COPY ./VSFTPD_BUILD /tmp/VERSION
 
-RUN bcg-install
+RUN bf-install
 
 VOLUME [ "/files", "/ssl" ]

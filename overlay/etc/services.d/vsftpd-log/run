@@ -8,4 +8,4 @@ export BCG_E="${PWD##*/}/$(basename ${0})"
 # Forward vsftpd error log to Docker.
 #======================================================================================================================
 
-bcg-forward ${PWD##*/} ${FTPS_VSFTPD_LOG_FILE}
+bf-forward ${PWD##*/} ${FTPS_VSFTPD_LOG_FILE}

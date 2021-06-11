@@ -8,10 +8,10 @@ export BCG_E=`basename ${0}`
 # Set environment variables.
 #======================================================================================================================
 
-bcg-env "FTPS_FILES" "/files"
+bf-env "FTPS_FILES" "/files"
 
-bcg-env "FTPS_VSFTPD_CONF" "/etc/vsftpd/vsftpd.conf"
-bcg-env "FTPS_VSFTPD_LOG_FILE" "/var/log/vsftpd.log"
-bcg-env "FTPS_SSL_CERT" "/ssl/vsftpd.pem"
+bf-env "FTPS_VSFTPD_CONF" "/etc/vsftpd/vsftpd.conf"
+bf-env "FTPS_VSFTPD_LOG_FILE" "/var/log/vsftpd.log"
+bf-env "FTPS_SSL_CERT" "/ssl/vsftpd.pem"
 
-bcg-env "FTPS_LFTP_CONF" "/etc/lftp.conf"
+bf-env "FTPS_LFTP_CONF" "/etc/lftp.conf"
