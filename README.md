@@ -1,9 +1,9 @@
 # Docker FTPS
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/bencgreen/docker-ftps) ![Docker Pulls](https://img.shields.io/docker/pulls/bcgdesign/ftps?label=pulls) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/bcgdesign/ftps/latest?label=size)<br/>
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bencgreen/docker-ftps/dev?label=build)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/bfren/docker-ftps) ![Docker Pulls](https://img.shields.io/docker/pulls/bcgdesign/ftps?label=pulls) ![Docker Image Size (tag)](https://img.shields.io/docker/image-size/bcgdesign/ftps/latest?label=size)<br/>
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/bfren/docker-ftps/dev?label=build)
 
-[Docker Repository](https://hub.docker.com/r/bcgdesign/ftps) - [bcg|design ecosystem](https://github.com/bencgreen/docker)
+[Docker Repository](https://hub.docker.com/r/bcgdesign/ftps) - [bfren ecosystem](https://github.com/bfren/docker)
 
 Comes with vsftpd installed and running in passive mode, with TLS support (self-signed certificates).
 
@@ -12,7 +12,7 @@ Comes with vsftpd installed and running in passive mode, with TLS support (self-
 * [Ports](#ports)
 * [Volumes](#volumes)
 * [Environment Variables](#environment-variables)
-* [Authors / Licence / Copyright](#authors)
+* [Licence / Copyright](#licence)
 
 ## Ports
 
@@ -38,15 +38,11 @@ Comes with vsftpd installed and running in passive mode, with TLS support (self-
 | `FTPS_SSL_BITS`      | string | The number of bits to use for the self-signed SSL certificate.                                                                  | 4096                                                    |
 | `FTPS_WELCOME`       | string | Welcome message when people sign in to the server.                                                                              | "Welcome to the FTPS server."                           |
 
-## Authors
+## Licence
 
-* [Ben Green](https://github.com/bencgreen)
-
-## License
-
-> [MIT](https://mit.bcgdesign.com/2020)
+> [MIT](https://mit.bfren.uk/2020)
 
 ## Copyright
 
-> Copyright (c) 2021 Ben Green <https://bcgdesign.com>
+> Copyright (c) 2021 bfren.uk
 > Unless otherwise stated
