@@ -154,7 +154,7 @@ ssl_sslv3=NO
 
 # We'll add a few more configuration options before finishing:
 require_ssl_reuse=NO
-ssl_ciphers=TLSv1.2
+ssl_ciphers=HIGH
 strict_ssl_read_eof=NO
 
 # external ip here
