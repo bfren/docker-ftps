@@ -12,6 +12,6 @@ bf-env "FTPS_FILES" "/files"
 
 bf-env "FTPS_VSFTPD_CONF" "/etc/vsftpd/vsftpd.conf"
 bf-env "FTPS_VSFTPD_LOG_FILE" "/var/log/vsftpd.log"
-bf-env "FTPS_SSL_CERT" "/ssl/vsftpd.pem"
+bf-env "FTPS_VSFTPD_CERT" "/ssl/vsftpd.pem"
 
 bf-env "FTPS_LFTP_CONF" "/etc/lftp.conf"
