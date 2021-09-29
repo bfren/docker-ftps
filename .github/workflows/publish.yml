@@ -14,27 +14,27 @@ jobs:
         uses: actions/checkout@v2
       -
         name: Read VSFTPD version - major
-        uses: bfren/read-file-action@v1
+        uses: bfren/read-file@v1
         with:
           path: ./VSFTPD_MAJOR
         id: vsftpd_major
       -
         name: Read Redis version - minor
-        uses: bfren/read-file-action@v1
+        uses: bfren/read-file@v1
         with:
           path: ./VSFTPD_MINOR
         id: vsftpd_minor
       -
         name: Read Redis version - revision
-        uses: bfren/read-file-action@v1
+        uses: bfren/read-file@v1
         with:
           path: ./VSFTPD_REVISION
         id: vsftpd_revision
       -
         name: Read image version
-        uses: bfren/read-file-action@v1
+        uses: bfren/read-file@v1
         with:
-          path: ./VERSION
+          file: ./VERSION
         id: version
       -
         name: Set up QEMU
@@ -57,12 +57,12 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
             bfren/ftps:latest
-            bfren/ftps:${{ steps.version.outputs.content }}
-            bfren/ftps:vsftpd${{ steps.vsftpd_major.outputs.content }}
-            bfren/ftps:vsftpd${{ steps.vsftpd_major.outputs.content }}-${{ steps.version.outputs.content }}
-            bfren/ftps:vsftpd${{ steps.vsftpd_minor.outputs.content }}
-            bfren/ftps:vsftpd${{ steps.vsftpd_minor.outputs.content }}-${{ steps.version.outputs.content }}
-            bfren/ftps:vsftpd${{ steps.vsftpd_revision.outputs.content }}
+            bfren/ftps:${{ steps.version.outputs.contents }}
+            bfren/ftps:vsftpd${{ steps.vsftpd_major.outputs.contents }}
+            bfren/ftps:vsftpd${{ steps.vsftpd_major.outputs.contents }}-${{ steps.version.outputs.contents }}
+            bfren/ftps:vsftpd${{ steps.vsftpd_minor.outputs.contents }}
+            bfren/ftps:vsftpd${{ steps.vsftpd_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
+            bfren/ftps:vsftpd${{ steps.vsftpd_revision.outputs.contents }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
