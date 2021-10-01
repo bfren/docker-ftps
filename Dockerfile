@@ -1,4 +1,4 @@
-FROM bfren/alpine-s6:alpineedge-2.2.11
+FROM bfren/alpine-s6:alpineedge-2.2.12
 
 EXPOSE 21 990 18700-18710
 
