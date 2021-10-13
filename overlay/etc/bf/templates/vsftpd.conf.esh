@@ -100,6 +100,7 @@ ftpd_banner=<%= ${FTPS_WELCOME} %>
 # directory. If chroot_local_user is YES, then this list becomes a list of
 # users to NOT chroot().
 chroot_local_user=YES
+local_root=<%= ${FTPS_FILES} %>
 #chroot_list_enable=YES
 # (default follows)
 #chroot_list_file=/etc/vsftpd/chroot_list
