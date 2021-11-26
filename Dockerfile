@@ -1,4 +1,4 @@
-FROM bfren/alpine-s6:alpine3.15-3.0.1
+FROM bfren/alpine-s6:alpine3.15-3.0.2
 
 EXPOSE 21 990 18700-18710
 
