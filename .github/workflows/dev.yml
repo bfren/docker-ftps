@@ -2,10 +2,8 @@ name: dev
 
 on:
   push:
-    branches-ignore:
-      - 'main'
-    tags-ignore:
-      - '**'
+    branches: ['**']
+    tags-ignore: ['**']
   workflow_dispatch:
 
 jobs:
