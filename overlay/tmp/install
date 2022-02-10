@@ -30,17 +30,14 @@ bf-done
 # Cleanup.
 #======================================================================================================================
 
-bf-debug "Cleaning up default vsftpd and SSL files."
+bf-echo "Cleaning up default vsftpd and SSL files."
 rm -rf /etc/vsftpd/* /etc/ssl/private
 
+bf-echo "Removing .empty files..."
+rm /files/.empty
+rm /ssl/.empty
 
-#======================================================================================================================
-# Create and link ftps directories.
-#======================================================================================================================
-
-bf-debug "Creating and linking ftps directories."
-
-mkdir /files
-
-mkdir /ssl
+bf-echo "Linking SSL directories."
 ln -s /ssl /etc/ssl/private
+
+bf-done
