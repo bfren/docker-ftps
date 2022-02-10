@@ -18,8 +18,9 @@ UID=${FTPS_UID:-1000}
 # Check whether or not the FTP user already exists.
 #======================================================================================================================
 
+bf-debug "Checking user ${FTPS_USER}..."
 EXISTS=`getent passwd ${FTPS_USER}`
-if [ -n "${EXISTS}" ]; then
+if [ -n "${EXISTS}" ] ; then
     bf-echo "User ${FTPS_USER} already exists."
     exit 0
 fi
