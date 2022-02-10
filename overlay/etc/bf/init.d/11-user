@@ -34,5 +34,5 @@ echo -e "${FTPS_PASS}\n${FTPS_PASS}" | adduser -h ${FTPS_FILES} -s /sbin/nologin
 bf-done
 
 bf-echo "Ensuring user owns ${HOME}..."
-chown ${FTPS_USER}:${FTPS_USER} ${FTPS_FILES}
+bf-ch -o ${FTPS_USER}:${FTPS_USER} ${FTPS_FILES}
 bf-done
