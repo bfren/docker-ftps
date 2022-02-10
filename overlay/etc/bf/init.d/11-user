@@ -19,9 +19,9 @@ UID=${FTPS_UID:-1000}
 #======================================================================================================================
 
 bf-debug "Checking user ${FTPS_USER}..."
-cat /etc/passwd | grep "${FTPS_USER}"
+getent passwd "${FTPS_USER}"
 bf-debug "Running check again..."
-USER_EXISTS=`getent passwd ${FTPS_USER}`
+USER_EXISTS=`getent passwd "${FTPS_USER}"`
 bf-debug "Exists: ${USER_EXISTS}"
 if [ -n "${USER_EXISTS}" ] ; then
     bf-echo "User ${FTPS_USER} already exists."
