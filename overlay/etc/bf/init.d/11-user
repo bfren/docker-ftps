@@ -33,6 +33,6 @@ bf-echo "Creating user ${FTPS_USER}..."
 echo -e "${FTPS_PASS}\n${FTPS_PASS}" | adduser -h ${FTPS_FILES} -s /sbin/nologin -u ${UID} ${FTPS_USER}
 bf-done
 
-bf-echo "Ensuring user owns ${HOME}..."
+bf-echo "Ensuring user owns ${FTPS_FILES}..."
 bf-ch -o ${FTPS_USER}:${FTPS_USER} ${FTPS_FILES}
 bf-done
