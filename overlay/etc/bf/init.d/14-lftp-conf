@@ -10,4 +10,3 @@ export BF_E=`basename ${0}`
 
 bf-echo "Writing lftp config..."
 bf-esh ${BF_TEMPLATES}/lftp.conf.esh ${FTPS_LFTP_CONF}
-bf-done

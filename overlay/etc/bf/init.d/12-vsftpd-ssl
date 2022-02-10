@@ -22,4 +22,3 @@ openssl req -newkey rsa:${FTPS_SSL_BITS} \
     -out ${FTPS_VSFTPD_CERT} \
     -keyout ${FTPS_VSFTPD_CERT} \
     -subj "/C=NA/ST=NA/L=NA/O=NA/OU=NA/CN=vsftpd"
-bf-done

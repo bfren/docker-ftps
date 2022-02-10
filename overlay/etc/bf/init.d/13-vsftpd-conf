@@ -18,4 +18,3 @@ fi
 
 bf-echo "Generating vsftpd config."
 bf-esh ${BF_TEMPLATES}/vsftpd.conf.esh ${FTPS_VSFTPD_CONF}
-bf-done
