@@ -20,7 +20,7 @@ ENV \
     FTPS_WELCOME="Welcome to the FTPS server."
 
 COPY ./overlay /
-COPY ./VSFTPD_BUILD /tmp/VSFTPD_VERSION
+COPY ./VSFTPD_BUILD /tmp/
 
 RUN bf-install
 
