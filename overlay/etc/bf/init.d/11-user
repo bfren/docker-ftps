@@ -19,6 +19,7 @@ UID=${FTPS_UID:-1000}
 #======================================================================================================================
 
 bf-debug "Checking user ${FTPS_USER}..."
+getent passwd ${FTPS_USER}
 USER_EXISTS=`getent passwd ${FTPS_USER}`
 bf-echo "${USER_EXISTS}"
 if [ -n "${USER_EXISTS}" ] ; then
