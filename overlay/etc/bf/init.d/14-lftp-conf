@@ -1,10 +1,12 @@
-#!/usr/bin/with-contenv sh
+#!/command/with-contenv sh
 
 set -euo pipefail
+export BF_E=`basename ${0}`
 
 
 #======================================================================================================================
-# Show helpful log message.
+# Create lftp configuration.
 #======================================================================================================================
 
-bf-svc-finish -s ${PWD##*/}
+bf-echo "Writing lftp config..."
+bf-esh ${BF_TEMPLATES}/lftp.conf.esh ${FTPS_LFTP_CONF}

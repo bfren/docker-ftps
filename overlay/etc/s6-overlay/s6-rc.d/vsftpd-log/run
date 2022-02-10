@@ -1,10 +1,11 @@
-#!/usr/bin/with-contenv sh
+#!/command/with-contenv sh
 
 set -euo pipefail
+export BF_E="${PWD##*/}/$(basename ${0})"
 
 
 #======================================================================================================================
-# Show helpful log message.
+# Forward vsftpd error log to Docker.
 #======================================================================================================================
 
-bf-svc-finish -s ${PWD##*/} -t
+bf-forward ${PWD##*/} ${FTPS_VSFTPD_LOG_FILE}

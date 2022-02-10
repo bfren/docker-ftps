@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv sh
+#!/command/with-contenv sh
 
 set -euo pipefail
 export BF_E=`basename ${0}`
@@ -18,4 +18,3 @@ fi
 
 bf-echo "Generating vsftpd config."
 bf-esh ${BF_TEMPLATES}/vsftpd.conf.esh ${FTPS_VSFTPD_CONF}
-bf-done
