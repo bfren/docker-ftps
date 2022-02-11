@@ -11,7 +11,7 @@ export BF_E=`basename ${0}`
 cd /tmp
 
 VERSION=$(cat VSFTPD_BUILD)
-bf-debug "vsftpd version ${VERSION}."
+bf-echo "vsftpd version ${VERSION}."
 
 
 #======================================================================================================================
