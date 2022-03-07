@@ -1,4 +1,4 @@
-FROM bfren/alpine-s6:alpine3.15-4.1.0
+FROM bfren/alpine-s6:alpine3.15-4.1.1
 
 ARG BF_IMAGE
 ARG BF_VERSION
@@ -20,7 +20,6 @@ ENV \
     FTPS_WELCOME="Welcome to the FTPS server."
 
 COPY ./overlay /
-COPY ./VSFTPD_BUILD /tmp/
 
 RUN bf-install
 
