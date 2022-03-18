@@ -20,19 +20,19 @@ jobs:
         name: Read VSFTPD version - major
         uses: bfren/read-file@v1
         with:
-          file: ./VSFTPD_MAJOR
+          file: ./overlay/tmp/VSFTPD_MAJOR
         id: vsftpd_major
       -
         name: Read Redis version - minor
         uses: bfren/read-file@v1
         with:
-          file: ./VSFTPD_MINOR
+          file: ./overlay/tmp/VSFTPD_MINOR
         id: vsftpd_minor
       -
         name: Read Redis version - revision
         uses: bfren/read-file@v1
         with:
-          file: ./VSFTPD_REVISION
+          file: ./overlay/tmp/VSFTPD_REVISION
         id: vsftpd_revision
       -
         name: Read image version
