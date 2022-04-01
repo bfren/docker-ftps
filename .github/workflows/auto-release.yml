@@ -1,0 +1,22 @@
+name: auto-release
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+    -
+      if: github.event.pull_request.merged == true
+      name: Get Pull Request Title
+      run: echo "PR_TITLE=${{ github.event.pull_request.title }}" >> $GITHUB_ENV
+      shell: bash
+    -
+      name: Create Release ${{ env.PR_TITLE }}
+      uses: bfren/action-gh-release@v1
+      with:
+        token: ${{ secrets.PAT }}
+        name: ${{ env.PR_TITLE }}
+        tag_name: ${{ env.PR_TITLE }}

@@ -1,0 +1,21 @@
+name: auto-pr
+
+on:
+  create
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    if: ${{ github.ref_type == 'branch' }}
+    steps:
+    -
+      name: Checkout Branch ${{ github.ref_name }}
+      uses: actions/checkout@v3
+    -
+      name: Create Pull Request
+      uses: bfren/pull-request@v2
+      with:
+        github_token: ${{ secrets.PAT }}
+        destination_branch: main
+        pr_title: ${{ github.ref_name }}
+        pr_body: "Merging branch to create ${{ github.ref_name }}."
