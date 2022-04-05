@@ -5,8 +5,8 @@ on:
 
 jobs:
   create-pr:
+    if: github.ref_type == 'branch'
     runs-on: ubuntu-latest
-    if: ${{ github.ref_type == 'branch' }}
     steps:
     -
       name: Checkout Branch ${{ github.ref_name }}
