@@ -11,8 +11,6 @@ jobs:
     steps:
     -
       name: Create Release ${{ github.event.pull_request.title }}
-      uses: bfren/create-release@v1
+      uses: bfren/create-release@v2
       with:
         token: ${{ secrets.PAT }}
-        repo: ${{ github.repository }}
-        pr_title: ${{ github.event.pull_request.title }}
