@@ -31,7 +31,7 @@ Comes with vsftpd installed and running in passive mode, with TLS support (self-
 
 | Variable             | Values | Description                                                                                                                     | Default                                                 |
 | -------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- |
-| `FTPS_USER`          | string | The username to use for connecting to the server.                                                                               | *None* - **required**                                   |
+| `FTPS_USER`          | string | A user account will be created to for connecting to the server.                                                                 | *None* - **required**                                   |
 | `FTPS_PASS`          | string | The password to use for connecting to the server.                                                                               | *None* - **required**                                   |
 | `FTPS_EXTERNAL_IP`   | string | The external IP of the server - required for passive mode (unless `FTPS_EXTERNAL_URI` is set).                                  | *None* - **required** unless `FTPS_EXTERNAL_URI` is set |
 | `FTPS_EXTERNAL_URI`  | string | The URI of the server - required for passive mode (unless `FTPS_EXTERNAL_IP` is set).<br>If both are set this takes precedence. | *None* - **required** unless `FTPS_EXTERNAL_IP` is set  |
