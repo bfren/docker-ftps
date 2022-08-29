@@ -33,10 +33,6 @@ bf-done
 bf-echo "Cleaning up default vsftpd and SSL files."
 rm -rf /etc/vsftpd/* /etc/ssl/private
 
-bf-echo "Removing .empty files..."
-rm /files/.empty
-rm /ssl/.empty
-
 bf-echo "Linking SSL directories."
 ln -s /ssl /etc/ssl/private
 
