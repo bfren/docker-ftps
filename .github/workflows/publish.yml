@@ -18,37 +18,37 @@ jobs:
         shell: bash
       -
         name: Read VSFTPD version - major
-        uses: bfren/read-file@v1
+        uses: bfren/read-file@v2
         with:
           file: ./overlay/tmp/VSFTPD_MAJOR
         id: vsftpd_major
       -
         name: Read VSFTPD version - minor
-        uses: bfren/read-file@v1
+        uses: bfren/read-file@v2
         with:
           file: ./overlay/tmp/VSFTPD_MINOR
         id: vsftpd_minor
       -
         name: Read VSFTPD version - revision
-        uses: bfren/read-file@v1
+        uses: bfren/read-file@v2
         with:
           file: ./overlay/tmp/VSFTPD_REVISION
         id: vsftpd_revision
       -
         name: Read image version
-        uses: bfren/read-file@v1
+        uses: bfren/read-file@v2
         with:
           file: ./VERSION_MAJOR
         id: version_major
       -
         name: Read image version
-        uses: bfren/read-file@v1
+        uses: bfren/read-file@v2
         with:
           file: ./VERSION_MINOR
         id: version_minor
       -
         name: Read image version
-        uses: bfren/read-file@v1
+        uses: bfren/read-file@v2
         with:
           file: ./VERSION
         id: version
