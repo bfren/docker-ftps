@@ -25,7 +25,7 @@ jobs:
         shell: bash
       -
         name: Read image version
-        uses: bfren/read-file@v1
+        uses: bfren/read-file@v2
         with:
           file: ./VERSION
         id: version
