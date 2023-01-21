@@ -61,8 +61,6 @@ jobs:
           tags: |
             bfren/ftps:dev
             bfren/ftps:${{ steps.version.outputs.contents }}-beta
-            ghcr.io/bfren/ftps:dev
-            ghcr.io/bfren/ftps:${{ steps.version.outputs.contents }}-beta
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

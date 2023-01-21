@@ -92,16 +92,6 @@ jobs:
             bfren/ftps:vsftpd${{ steps.vsftpd_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
             bfren/ftps:vsftpd${{ steps.vsftpd_revision.outputs.contents }}
             bfren/ftps:vsftpd${{ steps.vsftpd_revision.outputs.contents }}-${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/ftps:latest
-            ghcr.io/bfren/ftps:${{ steps.version_major.outputs.contents }}
-            ghcr.io/bfren/ftps:${{ steps.version_minor.outputs.contents }}
-            ghcr.io/bfren/ftps:${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/ftps:vsftpd${{ steps.vsftpd_major.outputs.contents }}
-            ghcr.io/bfren/ftps:vsftpd${{ steps.vsftpd_major.outputs.contents }}-${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/ftps:vsftpd${{ steps.vsftpd_minor.outputs.contents }}
-            ghcr.io/bfren/ftps:vsftpd${{ steps.vsftpd_minor.outputs.contents }}-${{ steps.version.outputs.contents }}
-            ghcr.io/bfren/ftps:vsftpd${{ steps.vsftpd_revision.outputs.contents }}
-            ghcr.io/bfren/ftps:vsftpd${{ steps.vsftpd_revision.outputs.contents }}-${{ steps.version.outputs.contents }}
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
