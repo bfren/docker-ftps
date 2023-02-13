@@ -1,0 +1,31 @@
+name: update-readme
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  update_readme:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Get repository name
+        run: echo "REPOSITORY_NAME=$(echo '${{ github.repository }}' | sed "s/bfren\/docker-//")" >> $GITHUB_ENV
+        shell: bash
+      -
+        name: Checkout code
+        uses: actions/checkout@v3
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      -
+        name: Update repo description with README.md
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: bfren/${{ env.REPOSITORY_NAME }}
