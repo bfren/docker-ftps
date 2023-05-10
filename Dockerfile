@@ -1,4 +1,4 @@
-FROM bfren/alpine-s6:alpine3.17-4.4.17
+FROM bfren/alpine-s6:alpine3.18-4.5.0
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-ftps"
 
