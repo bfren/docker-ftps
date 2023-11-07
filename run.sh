@@ -15,8 +15,8 @@ docker buildx build \
     docker run -it \
         -e BF_DEBUG=1 \
         -e BF_FTPS_EXTERNAL_IP=127.0.0.1 \
-        -e BF_FTPS_USER=foo \
-        -e BF_FTPS_PASS=bar \
+        -e BF_FTPS_VSFTPD_USER=foo \
+        -e BF_FTPS_VSFTPD_PASS=bar \
         -p "127.0.0.1:5353:53/udp" \
         ftps-dev \
         sh
