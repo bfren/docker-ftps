@@ -1,0 +1,8 @@
+#!/usr/bin/nu
+
+use bf
+use bf-ftps
+bf env load -x
+
+# Load the last 50 lines and then tail the FTPS log
+def main [] { bf-ftps log }

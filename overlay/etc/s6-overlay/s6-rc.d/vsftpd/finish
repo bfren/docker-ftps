@@ -1,11 +1,8 @@
-#!/command/with-contenv sh
+#!/usr/bin/nu
 
-set -euo pipefail
-export BF_E="${PWD##*/}/$(basename ${0})"
+use bf
+use bf-s6
+bf env load -x vsftpd
 
-
-#======================================================================================================================
-# Show helpful log message.
-#======================================================================================================================
-
-bf-svc-finish -t
+# Show helpful log message
+def main [...args] { bf-s6 svc finish --terminate }

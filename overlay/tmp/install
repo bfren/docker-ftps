@@ -1,39 +1,26 @@
-#!/bin/sh
+#!/usr/bin/nu
 
-set -euo pipefail
-export BF_E=`basename ${0}`
+use bf
 
+# Setup and install vsftpd
+def main [] {
+    # get vsftpd version and install
+    cd /tmp
+    let version = bf fs read ./VSFTPD_BUILD
+    bf write $"Installing vsftpd v($version)."
+    bf pkg install [$"vsftpd=($version)"]
 
-#======================================================================================================================
-# Get vsftpd version.
-#======================================================================================================================
+    # save vsftpd version to build log
+    bf build add vsftpd $version
 
-cd /tmp
+    # install additional packages
+    bf write "Installing additional packages."
+    bf pkg install [lftp openssl]
 
-VERSION=$(cat VSFTPD_BUILD)
-bf-echo "vsftpd version ${VERSION}."
+    # cleanup
+    bf write "Cleaning up default vsftpd and SSL files."
+    rm -rf /etc/vsftpd/* /etc/ssl/private
 
-
-#======================================================================================================================
-# Install vsftpd and dependencies.
-#======================================================================================================================
-
-bf-echo "Installing vsftpd v${VERSION}..."
-apk add --no-cache \
-    lftp \
-    openssl \
-    vsftpd=${VERSION}
-bf-done
-
-
-#======================================================================================================================
-# Cleanup.
-#======================================================================================================================
-
-bf-echo "Cleaning up default vsftpd and SSL files."
-rm -rf /etc/vsftpd/* /etc/ssl/private
-
-bf-echo "Linking SSL directories."
-ln -s /ssl /etc/ssl/private
-
-bf-done
+    bf write "Linking SSL directories."
+    ^ln -s /ssl /etc/ssl/private
+}
