@@ -4,9 +4,9 @@ bf env load
 # Generate vsftpd configuration file
 def main [] {
     # at least one of external URI or IP must be defined
-    let uri = bf env safe FTPS_EXTERNAL_URI
-    let ip = bf env safe FTPS_EXTERNAL_IP
-    if $uri == null and $ip == null {
+    let uri = bf env --safe FTPS_EXTERNAL_URI
+    let ip = bf env --safe FTPS_EXTERNAL_IP
+    if $uri == "" and $ip == "" {
         bf write error "You must provide either BF_FTPS_EXTERNAL_URI or BF_FTPS_EXTERNAL_IP."
     }
 
