@@ -17,6 +17,9 @@ def main [] {
     bf write "Installing additional packages."
     bf pkg install [lftp openssl]
 
+    # add bf-ftps module to config
+    bf config use bf-ftps
+
     # cleanup
     bf write "Cleaning up default vsftpd and SSL files."
     rm -rf /etc/vsftpd/* /etc/ssl/private
