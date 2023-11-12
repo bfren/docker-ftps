@@ -17,7 +17,7 @@ def main [] {
     # create the user
     let files = bf env FTPS_FILES
     bf write $"Creating user ($name)."
-    { ^echo -e $"($pass)\n($pass)" | ^adduser -h $files -s /sbin/nologin -u $uid $name } | bf handle
+    { $"($pass)\n($pass)" | ^adduser -h $files -s /sbin/nologin -u $uid $name } | bf handle
 
     # apply permissions
     bf write $"Ensuring user ($name) owns ($files)."
