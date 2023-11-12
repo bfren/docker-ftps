@@ -6,7 +6,7 @@ use bf
 def main [] {
     # get vsftpd version and install
     cd /tmp
-    let version = bf fs read ./VSFTPD_BUILD
+    let version = bf fs read VSFTPD_BUILD
     bf write $"Installing vsftpd v($version)."
     bf pkg install [$"vsftpd=($version)"]
 
