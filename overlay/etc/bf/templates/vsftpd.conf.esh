@@ -55,7 +55,7 @@ xferlog_enable=YES
 #
 # The name of log file when xferlog_enable=YES and xferlog_std_format=YES
 # WARNING - changing this filename affects /etc/logrotate.d/vsftpd.log
-xferlog_file=<%= ${FTPS_VSFTPD_LOG_FILE} %>
+xferlog_file=<% bf-env FTPS_VSFTPD_LOG_FILE %>
 #
 # Switches between logging into vsftpd_log_file and xferlog_file files.
 # NO writes to vsftpd_log_file, YES to xferlog_file
@@ -69,7 +69,7 @@ xferlog_file=<%= ${FTPS_VSFTPD_LOG_FILE} %>
 #
 # It is recommended that you define on your system a unique user which the
 # ftp server can use as a totally isolated and unprivileged user.
-nopriv_user=<%= ${FTPS_USER} %>
+nopriv_user=<% bf-env FTPS_VSFTPD_USER %>
 #
 # Enable this and the server will recognise asynchronous ABOR requests. Not
 # recommended for security (the code is non-trivial). Not enabling it,
@@ -88,7 +88,7 @@ nopriv_user=<%= ${FTPS_USER} %>
 #ascii_download_enable=YES
 #
 # You may fully customise the login banner string:
-ftpd_banner=<%= ${FTPS_WELCOME} %>
+ftpd_banner=<% bf-env FTPS_VSFTPD_WELCOME %>
 #
 # You may specify a file of disallowed anonymous e-mail addresses. Apparently
 # useful for combatting certain DoS attacks.
@@ -100,7 +100,7 @@ ftpd_banner=<%= ${FTPS_WELCOME} %>
 # directory. If chroot_local_user is YES, then this list becomes a list of
 # users to NOT chroot().
 chroot_local_user=YES
-local_root=<%= ${FTPS_FILES} %>
+local_root=<% bf-env FTPS_FILES %>
 #chroot_list_enable=YES
 # (default follows)
 #chroot_list_file=/etc/vsftpd/chroot_list
@@ -132,8 +132,8 @@ listen=YES
 # and key files. We actually combined both pieces of
 # information into a single file, so we will point
 # both options to the same file:
-rsa_cert_file=<%= ${FTPS_VSFTPD_CERT} %>
-rsa_private_key_file=<%= ${FTPS_VSFTPD_CERT} %>
+rsa_cert_file=<% bf-env FTPS_VSFTPD_CERT %>
+rsa_private_key_file=<% bf-env FTPS_VSFTPD_CERT %>
 
 # Next, we need enable the use of these files and
 # disable anonymous users. We should also force the
@@ -160,11 +160,11 @@ strict_ssl_read_eof=NO
 
 # external ip here
 # if you are in a private network and expect to be visited by the outside
-<% if [ -n "${FTPS_EXTERNAL_URI-}" ] ; then %>
-pasv_address=<%= ${FTPS_EXTERNAL_URI} %>
+<% if bf-env-check FTPS_EXTERNAL_URI ; then %>
+pasv_address=<% bf-env FTPS_EXTERNAL_URI %>
 pasv_addr_resolve=YES
 <% else %>
-pasv_address=<%= ${FTPS_EXTERNAL_IP} %>
+pasv_address=<% bf-env FTPS_EXTERNAL_IP %>
 <% fi %>
 
 pasv_enable=YES

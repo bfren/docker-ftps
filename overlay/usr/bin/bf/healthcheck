@@ -1,21 +1,26 @@
-#!/command/with-contenv sh
+#!/usr/bin/nu
 
-set -euo pipefail
-export BF_E=`basename ${0}`
+use bf
+bf env load -x
 
+# Attempt to connect to the local FTP server
+def main [] {
+    # set local IP
+    let ip = "127.0.0.1"
 
-#======================================================================================================================
-# Attempt to connect to the local FTP server.
-#======================================================================================================================
+    # create temporary filenames
+    cd /tmp
+    let lfile = { ^mktemp healthcheck.XXXXXX } | bf handle
+    let rfile = $"(bf env FTPS_FILES)/($lfile | path basename)"
 
-IP="127.0.0.1"
-bf-debug "Connecting to FTP server ${IP}."
+    # run check
+    let user = bf env FTPS_VSFTPD_USER
+    let pass = bf env FTPS_VSFTPD_PASS
+    let code = { ^lftp -c $"open -u ($user),($pass) ($ip) && put -E ($lfile)" } | bf handle -c
 
-LFILE=$(mktemp -t healthcheck.XXXXXX || bf-error "Unable to create temporary file.")
-RFILE=${FTPS_FILES}/`basename ${LFILE}`
-CHECK=$(lftp -c "open -u ${FTPS_USER},${FTPS_PASS} ${IP} && put -E ${LFILE} && echo 1" || true)
+    # remove temporary files
+    rm -f $lfile $rfile
 
-rm -f ${LFILE} ${RFILE}
-
-[[ "${CHECK}" = "1" ]] && exit 0
-exit 1
+    # exit using check code
+    exit $code
+}

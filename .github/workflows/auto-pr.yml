@@ -10,7 +10,7 @@ jobs:
     steps:
     -
       name: Checkout Branch ${{ github.ref_name }}
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     -
       name: Create Pull Request
       uses: bfren/pull-request@v2
