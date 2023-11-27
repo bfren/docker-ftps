@@ -25,7 +25,7 @@ ENV \
     # whether the LFTP client should verify the server certificate for the healthcheck
     # - only use 'yes' if you have a non-self-signed SSL certificate mapped to /ssl/vsftpd.pem
     # valid values are values 'yes' or 'no' (default)
-    BF=FTPS_LFTP_VERIFY_CERT=no
+    BF_FTPS_LFTP_VERIFY_CERT=no
 
 RUN bf-install
 

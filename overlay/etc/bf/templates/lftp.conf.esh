@@ -1,4 +1,4 @@
 set net:timeout 5
 set net:max-retries 2
 set net:reconnect-interval-base 5
-set ssl:verify-certificate no
+set ssl:verify-certificate <% bf-env FTPS_LFTP_VERIFY_CERT %>
