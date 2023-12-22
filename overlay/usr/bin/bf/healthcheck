@@ -10,7 +10,7 @@ def main [] {
 
     # create temporary filenames
     cd /tmp
-    let lfile = { ^mktemp healthcheck.XXXXXX } | bf handle
+    let lfile = mktemp healthcheck.XXXXXX
     let rfile = $"(bf env FTPS_FILES)/($lfile | path basename)"
 
     # run check
