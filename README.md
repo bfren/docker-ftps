@@ -43,4 +43,4 @@ Comes with vsftpd installed and running in passive mode, with TLS support (self-
 
 ## Copyright
 
-> Copyright (c) 2021-2023 [bfren](https://bfren.dev) (unless otherwise stated)
+> Copyright (c) 2021-2024 [bfren](https://bfren.dev) (unless otherwise stated)
