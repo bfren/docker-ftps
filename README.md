@@ -6,6 +6,29 @@
 
 Comes with vsftpd installed and running in passive mode, with TLS support (self-signed certificates).
 
+WinSCP config (for example):
+
+```d
+// do not choose SFTP, this is a completely different protocol)
+Protocol: FTP
+
+// (i.e. not 'plain' or 'implicit')
+Encryption: TLS/SSL Explicit encryption
+
+// choose either the IP or URI defined in docker-compose.yml
+Host: BF_FTPS_EXTERNAL_IP or BF_FTPS_EXTERNAL_URI
+
+// you need to open ports 990 and 18700-18710 as well - the
+// connection begins on port 21 and is escalated to the others
+Port: 21
+
+// defined in docker-compose.yml
+User name: BF_FTPS_VSFTPD_USER
+
+// defined in docker-compose.yml
+Password: BF_FTPS_VSFTPD_PASS
+```
+
 ## Contents
 
 * [Ports](#ports)
