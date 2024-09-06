@@ -178,3 +178,9 @@ allow_writeable_chroot=YES
 # ref: https://github.com/microsoft/WSL/issues/5412#issuecomment-644330450
 seccomp_sandbox=NO
 isolate_network=NO
+
+# ref: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/4/html/reference_guide/s2-ftp-vsftpd-conf-opt-log
+<% if bf-env-check FTPS_VSFTPD_ENABLE_DEBUG_LOG ; then %>
+syslog_enable=YES
+log_ftp_protocol=YES
+<% fi
