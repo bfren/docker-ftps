@@ -6,7 +6,8 @@
 #
 # READ THIS: This example file is NOT an exhaustive list of vsftpd options.
 # Please read the vsftpd.conf.5 manual page to get a full idea of vsftpd's
-# capabilities.
+# capabilities, also available online here:
+# https://security.appspot.com/vsftpd/vsftpd_conf.html
 #
 # Allow anonymous FTP? (Beware - allowed by default if you comment this out).
 anonymous_enable=NO
@@ -40,10 +41,6 @@ local_umask=077
 # go into a certain directory.
 dirmessage_enable=YES
 #
-# The target log file can be vsftpd_log_file or xferlog_file.
-# This depends on setting xferlog_std_format parameter
-xferlog_enable=YES
-#
 # Make sure PORT transfer connections originate from port 20 (ftp-data).
 #connect_from_port_20=YES
 #
@@ -52,14 +49,6 @@ xferlog_enable=YES
 # recommended!
 #chown_uploads=YES
 #chown_username=whoever
-#
-# The name of log file when xferlog_enable=YES and xferlog_std_format=YES
-# WARNING - changing this filename affects /etc/logrotate.d/vsftpd.log
-xferlog_file=<% bf-env FTPS_VSFTPD_LOG_FILE %>
-#
-# Switches between logging into vsftpd_log_file and xferlog_file files.
-# NO writes to vsftpd_log_file, YES to xferlog_file
-#xferlog_std_format=YES
 #
 # You may change the default value for timing out an idle session.
 #idle_session_timeout=600
@@ -160,11 +149,11 @@ strict_ssl_read_eof=NO
 
 # external ip here
 # if you are in a private network and expect to be visited by the outside
-<% if bf-env-check FTPS_EXTERNAL_URI ; then %>
+<% if bf-env-check FTPS_EXTERNAL_URI ; then -%>
 pasv_address=<% bf-env --safe FTPS_EXTERNAL_URI %>
 pasv_addr_resolve=YES
 <% else %>
-pasv_address=<% bf-env --safe FTPS_EXTERNAL_IP %>
+pasv_address=<% bf-env --safe FTPS_EXTERNAL_IP -%>
 <% fi %>
 
 pasv_enable=YES
@@ -180,7 +169,26 @@ seccomp_sandbox=NO
 isolate_network=NO
 
 # ref: https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/4/html/reference_guide/s2-ftp-vsftpd-conf-opt-log
-<% if bf-env-check FTPS_VSFTPD_ENABLE_DEBUG_LOG ; then %>
+<% if bf-env-check FTPS_VSFTPD_ENABLE_DEBUG_LOG ; then -%>
+#
+# If enabled, then any log output which would have gone to /var/log/vsftpd.log
+# goes to the system log instead. Logging is done under the FTPD facility.
 syslog_enable=YES
+#
+# When enabled, all FTP requests and responses are logged, providing the
+# option xferlog_std_format is not enabled. Useful for debugging.
 log_ftp_protocol=YES
-<% fi
+<% else -%>
+#
+# The target log file can be vsftpd_log_file or xferlog_file.
+# This depends on setting xferlog_std_format parameter
+xferlog_enable=YES
+#
+# The name of log file when xferlog_enable=YES and xferlog_std_format=YES
+# WARNING - changing this filename affects /etc/logrotate.d/vsftpd.log
+xferlog_file=<% bf-env FTPS_VSFTPD_LOG_FILE %>
+#
+# Switches between logging into vsftpd_log_file and xferlog_file files.
+# NO writes to vsftpd_log_file, YES to xferlog_file
+xferlog_std_format=YES
+<% fi %>
