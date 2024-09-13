@@ -1,4 +1,4 @@
-FROM ghcr.io/bfren/alpine-s6:alpine3.20-5.4.8
+FROM ghcr.io/bfren/alpine-s6:alpine3.20-5.4.9
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-ftps"
 
@@ -23,6 +23,8 @@ ENV \
     BF_FTPS_VSFTPD_PASS= \
     # the welcome message when people sign in to the server
     BF_FTPS_VSFTPD_WELCOME="Welcome to the FTPS server." \
+    # enable vsftpd debug logging of all FTP commands and responses
+    BF_FTPS_VSFTPD_ENABLE_DEBUG_LOG=0 \
     # whether the LFTP client should verify the server certificate for the healthcheck
     # - only use 'yes' if you have a non-self-signed SSL certificate mapped to /ssl/vsftpd.pem
     # valid values are values 'yes' or 'no' (default)
