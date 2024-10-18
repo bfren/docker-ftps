@@ -19,7 +19,7 @@ def main [] {
     let code = { ^lftp -c $"open -u ($user),($pass) ($ip) && put -E ($lfile)" } | bf handle -c
 
     # remove temporary files
-    bf del force $lfile $rfile
+    rm --force $lfile $rfile
 
     # exit using check code
     exit $code

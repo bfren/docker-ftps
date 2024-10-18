@@ -22,7 +22,7 @@ def main [] {
 
     # cleanup
     bf write "Cleaning up default vsftpd and SSL files."
-    bf del force /etc/vsftpd/* /etc/ssl/private
+    rm --force --recursive /etc/vsftpd/* /etc/ssl/private
 
     bf write "Linking SSL directories."
     ^ln -s /ssl /etc/ssl/private
