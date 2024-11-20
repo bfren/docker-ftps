@@ -173,12 +173,11 @@ isolate_network=NO
 #
 # If enabled, then any log output which would have gone to /var/log/vsftpd.log
 # goes to the system log instead. Logging is done under the FTPD facility.
-syslog_enable=YES
+vsftpd_log_file=<% bf-env FTPS_VSFTPD_LOG_FILE %>
 #
 # When enabled, all FTP requests and responses are logged, providing the
 # option xferlog_std_format is not enabled. Useful for debugging.
 log_ftp_protocol=YES
-<% else -%>
 #
 # The target log file can be vsftpd_log_file or xferlog_file.
 # This depends on setting xferlog_std_format parameter
@@ -190,5 +189,14 @@ xferlog_file=<% bf-env FTPS_VSFTPD_LOG_FILE %>
 #
 # Switches between logging into vsftpd_log_file and xferlog_file files.
 # NO writes to vsftpd_log_file, YES to xferlog_file
-xferlog_std_format=YES
+xferlog_std_format=NO
+<% else -%>
+#
+# When enabled, all FTP requests and responses are logged, providing the
+# option xferlog_std_format is not enabled. Useful for debugging.
+log_ftp_protocol=NO
+#
+# The target log file can be vsftpd_log_file or xferlog_file.
+# This depends on setting xferlog_std_format parameter
+xferlog_enable=NO
 <% fi %>

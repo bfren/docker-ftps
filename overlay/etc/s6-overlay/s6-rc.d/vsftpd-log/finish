@@ -1,0 +1,8 @@
+#!/usr/bin/nu
+
+use bf
+use bf-s6
+bf env load -x vsftpd-log
+
+# Show helpful log message
+def main [...args] { bf-s6 svc finish }
