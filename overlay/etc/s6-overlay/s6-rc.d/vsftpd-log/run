@@ -1,0 +1,8 @@
+#!/usr/bin/nu
+
+use bf
+use bf-s6
+bf env load -x vsftpd-log
+
+# Forward vsftpd log to Docker
+def main [...args] { bf-s6 log forward vsftpd-log (bf env FTPS_VSFTPD_LOG_FILE) }
