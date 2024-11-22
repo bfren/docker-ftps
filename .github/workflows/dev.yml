@@ -59,7 +59,7 @@ jobs:
         name: Run tests
         id: docker_test
         run: |
-          docker run --entrypoint "/usr/bin/env" ${{ env.TEST_TAG }} -i nu -c "use bf test ; test"
+          docker run --entrypoint /test ${{ env.TEST_TAG }}
       -
         name: Build and push
         id: docker_build
