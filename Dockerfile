@@ -1,4 +1,4 @@
-FROM ghcr.io/bfren/alpine-s6:alpine3.21-5.5.2
+FROM ghcr.io/bfren/alpine-s6:alpine3.21-5.5.3
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-ftps"
 
@@ -17,6 +17,10 @@ ENV \
     BF_FTPS_EXTERNAL_URI= \
     # the number of bits for the SSL certificate
     BF_FTPS_SSL_BITS=4096 \
+    # min port number for data connections
+    BF_FTPS_VSFTPD_MIN_PORT=18700 \
+    # max port number for data connections
+    BF_FTPS_VSFTPD_MAX_PORT=18710 \
     # the username to connect to the server
     BF_FTPS_VSFTPD_USER= \
     # the password to connect to the server

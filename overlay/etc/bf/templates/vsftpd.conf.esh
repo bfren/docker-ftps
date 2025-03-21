@@ -157,8 +157,8 @@ pasv_address=<% bf-env --safe FTPS_EXTERNAL_IP -%>
 <% fi %>
 
 pasv_enable=YES
-pasv_min_port=18700
-pasv_max_port=18710
+pasv_min_port=<% bf-env FTPS_VSFTPD_MIN_PORT %>
+pasv_max_port=<% bf-env FTPS_VSFTPD_MAX_PORT %>
 port_enable=YES
 
 # ref: https://www.benscobie.com/fixing-500-oops-vsftpd-refusing-to-run-with-writable-root-inside-chroot/
