@@ -8,14 +8,11 @@ jobs:
     if: github.ref_type == 'branch'
     runs-on: ubuntu-latest
     steps:
-    -
-      name: Checkout Branch ${{ github.ref_name }}
-      uses: actions/checkout@v4
-    -
-      name: Create Pull Request
-      uses: bfren/pull-request@v2
-      with:
-        github_token: ${{ secrets.PAT }}
-        destination_branch: main
-        pr_title: ${{ github.ref_name }}
-        pr_body: "Merging branch to create ${{ github.ref_name }}."
+      -
+        name: Checkout Branch ${{ github.ref_name }}
+        uses: actions/checkout@v4
+      -
+        name: Create Pull Request
+        run: gh pr create -B main --title "${{ github.ref_name }}" --body "Merging branch to create ${{ github.ref_name }}."
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
