@@ -149,7 +149,7 @@ strict_ssl_read_eof=NO
 
 # external ip here
 # if you are in a private network and expect to be visited by the outside
-<% if bf-env-check FTPS_EXTERNAL_URI ; then -%>
+<% if bf-env-not-empty FTPS_EXTERNAL_URI ; then -%>
 pasv_address=<% bf-env --safe FTPS_EXTERNAL_URI %>
 pasv_addr_resolve=YES
 <% else %>
