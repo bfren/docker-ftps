@@ -62,6 +62,7 @@ Password: BF_FTPS_VSFTPD_PASS
 | `BF_FTPS_VSFTPD_PASS`             | string | The password to use for connecting to the server.                                                                                  | *None* - **required**                                      |
 | `BF_FTPS_VSFTPD_UID`              | string | User ID with access rights to the `/files` directory.                                                                              | 1000                                                       |
 | `BF_FTPS_VSFTPD_ENABLE_DEBUG_LOG` | 0 or 1 | Whether or not to enable all FTP commands and responses for vsftpd.                                                                | 0                                                          |
+| `BF_FTPS_VSFTPD_PASV_PROMISCUOUS` | 0 or 1 | If set to '1' then `pasv_promiscuous` will be set to 'yes' for vsftpd - be sure you know what you're doing.                        | 0                                                          |
 | `BF_FTPS_VSFTPD_WELCOME`          | string | Welcome message when people sign in to the server.                                                                                 | "Welcome to the FTPS server."                              |
 
 ## Licence

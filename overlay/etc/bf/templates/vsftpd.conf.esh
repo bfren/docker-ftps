@@ -160,6 +160,9 @@ pasv_enable=YES
 pasv_min_port=<% bf-env FTPS_VSFTPD_MIN_PORT %>
 pasv_max_port=<% bf-env FTPS_VSFTPD_MAX_PORT %>
 port_enable=YES
+<% if bf-env-check FTPS_VSFTPD_PASV_PROMISCUOUS ; then -%>
+pasv_promiscuous=yes
+<% fi %>
 
 # ref: https://www.benscobie.com/fixing-500-oops-vsftpd-refusing-to-run-with-writable-root-inside-chroot/
 allow_writeable_chroot=YES
