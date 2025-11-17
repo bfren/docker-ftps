@@ -32,7 +32,7 @@ ENV \
     # set to 1 to enable – from the man page:
     # Only enable if you know what you are doing! The only legitimate use for this is in some
     # form of secure tunnelling scheme, or perhaps to facilitate FXP support
-    BF_FTPS_VSFTPD_PASV_PROMISCUOUS=0 \
+    BF_FTPS_VSFTPD_ENABLE_PASV_PROMISCUOUS=0 \
     # whether the LFTP client should verify the server certificate for the healthcheck
     # - only use 'yes' if you have a non-self-signed SSL certificate mapped to /ssl/vsftpd.pem
     # valid values are values 'yes' or 'no' (default)
