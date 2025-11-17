@@ -51,18 +51,19 @@ Password: BF_FTPS_VSFTPD_PASS
 
 ## Environment Variables
 
-| Variable                          | Values | Description                                                                                                                        | Default                                                    |
-| --------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| `BF_FTPS_EXTERNAL_IP`             | string | The external IP of the server - required for passive mode (unless `BF_FTPS_EXTERNAL_URI` is set).                                  | *None* - **required** unless `BF_FTPS_EXTERNAL_URI` is set |
-| `BF_FTPS_EXTERNAL_URI`            | string | The URI of the server - required for passive mode (unless `BF_FTPS_EXTERNAL_IP` is set).<br>If both are set this takes precedence. | *None* - **required** unless `BF_FTPS_EXTERNAL_IP` is set  |
-| `BF_FTPS_SSL_BITS`                | string | The number of bits to use for the self-signed SSL certificate.                                                                     | 4096                                                       |
-| `BF_FTPS_VSFTPD_MIN_PORT`         | number | The minimum port number to use for data transfer for VSFTPD.                                                                       | 18700                                                      |
-| `BF_FTPS_VSFTPD_MAX_PORT`         | number | The maximum port number to use for data transfer for VSFTPD.                                                                       | 18710                                                      |
-| `BF_FTPS_VSFTPD_USER`             | string | A user account will be created for connecting to the server.                                                                       | *None* - **required**                                      |
-| `BF_FTPS_VSFTPD_PASS`             | string | The password to use for connecting to the server.                                                                                  | *None* - **required**                                      |
-| `BF_FTPS_VSFTPD_UID`              | string | User ID with access rights to the `/files` directory.                                                                              | 1000                                                       |
-| `BF_FTPS_VSFTPD_ENABLE_DEBUG_LOG` | 0 or 1 | Whether or not to enable all FTP commands and responses for vsftpd.                                                                | 0                                                          |
-| `BF_FTPS_VSFTPD_WELCOME`          | string | Welcome message when people sign in to the server.                                                                                 | "Welcome to the FTPS server."                              |
+| Variable                                  | Values | Description                                                                                                                        | Default                                                    |
+| ----------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
+| `BF_FTPS_EXTERNAL_IP`                     | string | The external IP of the server - required for passive mode (unless `BF_FTPS_EXTERNAL_URI` is set).                                  | *None* - **required** unless `BF_FTPS_EXTERNAL_URI` is set |
+| `BF_FTPS_EXTERNAL_URI`                    | string | The URI of the server - required for passive mode (unless `BF_FTPS_EXTERNAL_IP` is set).<br>If both are set this takes precedence. | *None* - **required** unless `BF_FTPS_EXTERNAL_IP` is set  |
+| `BF_FTPS_SSL_BITS`                        | string | The number of bits to use for the self-signed SSL certificate.                                                                     | 4096                                                       |
+| `BF_FTPS_VSFTPD_MIN_PORT`                 | number | The minimum port number to use for data transfer for VSFTPD.                                                                       | 18700                                                      |
+| `BF_FTPS_VSFTPD_MAX_PORT`                 | number | The maximum port number to use for data transfer for VSFTPD.                                                                       | 18710                                                      |
+| `BF_FTPS_VSFTPD_USER`                     | string | A user account will be created for connecting to the server.                                                                       | *None* - **required**                                      |
+| `BF_FTPS_VSFTPD_PASS`                     | string | The password to use for connecting to the server.                                                                                  | *None* - **required**                                      |
+| `BF_FTPS_VSFTPD_UID`                      | string | User ID with access rights to the `/files` directory.                                                                              | 1000                                                       |
+| `BF_FTPS_VSFTPD_ENABLE_DEBUG_LOG`         | 0 or 1 | Whether or not to enable all FTP commands and responses for vsftpd.                                                                | 0                                                          |
+| `BF_FTPS_VSFTPD_ENABLE_PASV_PROMISCUOUS`  | 0 or 1 | If set to '1' then `pasv_promiscuous` will be set to 'yes' for vsftpd - be sure you know what you're doing.                        | 0                                                          |
+| `BF_FTPS_VSFTPD_WELCOME`                  | string | Welcome message when people sign in to the server.                                                                                 | "Welcome to the FTPS server."                              |
 
 ## Licence
 
