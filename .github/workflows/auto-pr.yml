@@ -10,7 +10,7 @@ jobs:
     steps:
       -
         name: Checkout Branch ${{ github.ref_name }}
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       -
         name: Create Pull Request
         run: gh pr create -B main --title "${{ github.ref_name }}" --body "Merging branch to create ${{ github.ref_name }}."
