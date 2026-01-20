@@ -71,4 +71,4 @@ Password: BF_FTPS_VSFTPD_PASS
 
 ## Copyright
 
-> Copyright (c) 2021-2025 [bfren](https://bfren.dev) (unless otherwise stated)
+> Copyright (c) 2021-2026 [bfren](https://bfren.dev) (unless otherwise stated)
