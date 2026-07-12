@@ -1,4 +1,4 @@
-FROM quay.io/bfren/alpine-s6:alpine3.24-6.2.0
+FROM quay.io/bfren/alpine-s6:alpine3.24-6.2.1
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-ftps"
 
