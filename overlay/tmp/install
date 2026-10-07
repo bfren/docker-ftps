@@ -18,7 +18,7 @@ def main [] {
     bf pkg install [lftp openssl]
 
     # add bf-ftps module to config
-    bf config use bf-ftps
+    bf config use_mod bf-ftps
 
     # cleanup
     bf write "Cleaning up default vsftpd and SSL files."
