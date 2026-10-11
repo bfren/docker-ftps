@@ -14,4 +14,4 @@ nu -c "use bf-ftps run ; run preflight"
 # Run vsftpd server.
 #======================================================================================================================
 
-vsftpd ${BF_FTPS_VSFTPD_CONF}
+exec vsftpd ${BF_FTPS_VSFTPD_CONF}
