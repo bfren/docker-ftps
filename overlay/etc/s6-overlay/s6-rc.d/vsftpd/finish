@@ -5,4 +5,4 @@ use bf-s6
 bf env load -x vsftpd
 
 # Show helpful log message
-def main [...args] { bf-s6 svc finish --terminate }
+def main [...args] { bf-s6 svc finish --terminate ...$args }
