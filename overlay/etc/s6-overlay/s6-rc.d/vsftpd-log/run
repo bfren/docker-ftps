@@ -2,7 +2,18 @@
 
 use bf
 use bf-s6
-bf env load -x vsftpd-log
+bf env load
 
 # Forward vsftpd log to Docker
-def main [...args] { bf-s6 log forward vsftpd-log (bf env FTPS_VSFTPD_LOG_FILE) }
+def main [
+    name: string    # The service name, passed by s6-supervise
+] {
+    # set executable name - used to make log output more useful
+    bf env x_set --override run $name
+
+    # run checks before executing service
+    bf write debug "No pre-run checks required."
+
+    # forward the log file to Docker
+    bf-s6 log forward $name (bf env FTPS_VSFTPD_LOG_FILE)
+}
