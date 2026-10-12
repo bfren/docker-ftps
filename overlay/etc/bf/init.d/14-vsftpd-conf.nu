@@ -1,4 +1,5 @@
 use bf
+use bf-s6
 bf env load
 
 # Generate vsftpd configuration file
@@ -12,5 +13,5 @@ def main [] {
 
     # generate configuration file
     bf write "Generating vsftpd configuration."
-    bf esh template (bf env FTPS_VSFTPD_CONF)
+    bf-s6 esh template (bf env FTPS_VSFTPD_CONF)
 }
