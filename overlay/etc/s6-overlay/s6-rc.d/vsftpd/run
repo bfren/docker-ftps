@@ -1,17 +1,23 @@
-#!/bin/withenv sh
+#!/usr/bin/nu
 
-set -euo pipefail
+use bf
+use bf-s6
+bf env load
 
+# Start the vsftpd server
+def main [
+    name: string    # The service name, passed by s6-supervise
+] {
+    # set executable name - used to make log output more useful
+    bf env x_set --override run $name
 
-#======================================================================================================================
-# Run preflight checks
-#======================================================================================================================
+    # run checks before executing service
+    bf write debug "No pre-run checks required."
 
-nu -c "use bf-ftps run ; run preflight"
-
-
-#======================================================================================================================
-# Run vsftpd server.
-#======================================================================================================================
-
-exec vsftpd ${BF_FTPS_VSFTPD_CONF}
+    # launch vsftpd service
+    bf write "Starting vsftpd."
+    let args = [
+        (bf env FTPS_VSFTPD_CONF)
+    ]
+    bf-s6 svc launch vsftpd ...$args
+}
