@@ -124,7 +124,7 @@ Put a PEM file containing both the certificate and its private key at `/ssl/vsft
 ## Testing
 
 ```sh
-./test.sh   # builds the image and runs /test
+./test.nu   # builds the image and runs /test
 ./run.sh    # builds the image and opens a shell, with the ports published on 127.0.0.1
 ```
 
