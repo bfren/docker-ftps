@@ -8,7 +8,8 @@ use bf
 
 export def install__vsftpd_matches_build [] {
     let build = with-env {BF_ETC: "/etc/bf"} { bf build | get vsftpd }
-    let installed = ^vsftpd -v | complete | $in.stdout + $in.stderr | parse --regex '(?<v>\d+\.\d+\.\d+)' | get v.0
+    # vsftpd writes its version to file descriptor 0 (stdin), so redirect that to stdout
+    let installed = ^sh -c "vsftpd -v 0>&1" | complete | get stdout | parse --regex '(?<v>\d+\.\d+\.\d+)' | get v.0
 
     assert ($build | str starts-with $installed) $"vsftpd ($installed) should match the build ($build)"
 }
