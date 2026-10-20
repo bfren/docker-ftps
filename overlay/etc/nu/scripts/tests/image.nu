@@ -31,7 +31,7 @@ export def install__ssl_directory_is_linked [] {
 
 export def scripts__parse [] {
     let paths = [
-        "/usr/bin/bf/bf-healthcheck"
+        "/etc/bf/health.d/10-vsftpd.nu"
         "/etc/s6-overlay/s6-rc.d/vsftpd/run"
         "/etc/s6-overlay/s6-rc.d/vsftpd-log/run"
         "/etc/bf/init.d/11-user.nu"

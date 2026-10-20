@@ -1,5 +1,3 @@
-#!/usr/bin/nu
-
 use bf
 bf env load -x
 
