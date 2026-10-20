@@ -15,7 +15,7 @@ It is built on [Alpine + S6](https://github.com/bfren/docker-alpine-s6), with vs
 ```yaml
 services:
   ftps:
-    image: quay.io/bfren/ftps:5.1
+    image: quay.io/bfren/ftps:5.2
     restart: unless-stopped
     ports:
       - "0.0.0.0:21:21"
@@ -55,15 +55,15 @@ Accept the certificate when the client asks - it is self-signed unless you provi
 
 Images are published to Docker Hub (`bfren/ftps`) and Quay.io (`quay.io/bfren/ftps`) for `linux/amd64`, `linux/arm/v7` and `linux/arm64`, with vsftpd 3.0.5 on Alpine 3.24.
 
-| Tag                    | Example              | Use when                                   |
-| ---------------------- | -------------------- | ------------------------------------------ |
-| `latest`               |                      | You always want the newest image           |
-| `MAJOR`                | `5`                  | You want updates, but not breaking changes |
-| `MINOR`                | `5.1`                | You want fixes only - **recommended**      |
-| `VERSION`              | `5.1.15`             | You want to pin this image exactly         |
-| `vsftpdX`, `vsftpdX.Y` | `vsftpd3.0`          | You want a vsftpd version                  |
-| `vsftpdX.Y.Z`          | `vsftpd3.0.5`        | You want an exact vsftpd release           |
-| `vsftpdX.Y.Z-VERSION`  | `vsftpd3.0.5-5.1.15` | You want to pin both                       |
+| Tag                    | Example             | Use when                                   |
+| ---------------------- | ------------------- | ------------------------------------------ |
+| `latest`               |                     | You always want the newest image           |
+| `MAJOR`                | `5`                 | You want updates, but not breaking changes |
+| `MINOR`                | `5.2`               | You want fixes only - **recommended**      |
+| `VERSION`              | `5.2.0`             | You want to pin this image exactly         |
+| `vsftpdX`, `vsftpdX.Y` | `vsftpd3.0`         | You want a vsftpd version                  |
+| `vsftpdX.Y.Z`          | `vsftpd3.0.5`       | You want an exact vsftpd release           |
+| `vsftpdX.Y.Z-VERSION`  | `vsftpd3.0.5-5.2.0` | You want to pin both                       |
 
 ## Configuration
 
