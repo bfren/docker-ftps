@@ -27,6 +27,36 @@ jobs:
           file: ./VERSION
         id: version
       -
+        name: Read VSFTPD version - major
+        uses: bfren/read-file@v2
+        with:
+          file: ./overlay/tmp/VSFTPD_MAJOR
+        id: vsftpd_major
+      -
+        name: Read VSFTPD version - minor
+        uses: bfren/read-file@v2
+        with:
+          file: ./overlay/tmp/VSFTPD_MINOR
+        id: vsftpd_minor
+      -
+        name: Read VSFTPD version - revision
+        uses: bfren/read-file@v2
+        with:
+          file: ./overlay/tmp/VSFTPD_REVISION
+        id: vsftpd_revision
+      -
+        name: Read image version
+        uses: bfren/read-file@v2
+        with:
+          file: ./VERSION_MAJOR
+        id: version_major
+      -
+        name: Read image version
+        uses: bfren/read-file@v2
+        with:
+          file: ./VERSION_MINOR
+        id: version_minor
+      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v4
       -
@@ -72,9 +102,25 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           tags: |
             bfren/ftps:dev
+            bfren/ftps:${{ steps.version_major.outputs.contents }}-dev
+            bfren/ftps:${{ steps.version_minor.outputs.contents }}-dev
             bfren/ftps:${{ steps.version.outputs.contents }}-dev
+            bfren/ftps:vsftpd${{ steps.vsftpd_major.outputs.contents }}-dev
+            bfren/ftps:vsftpd${{ steps.vsftpd_major.outputs.contents }}-${{ steps.version.outputs.contents }}-dev
+            bfren/ftps:vsftpd${{ steps.vsftpd_minor.outputs.contents }}-dev
+            bfren/ftps:vsftpd${{ steps.vsftpd_minor.outputs.contents }}-${{ steps.version.outputs.contents }}-dev
+            bfren/ftps:vsftpd${{ steps.vsftpd_revision.outputs.contents }}-dev
+            bfren/ftps:vsftpd${{ steps.vsftpd_revision.outputs.contents }}-${{ steps.version.outputs.contents }}-dev
             quay.io/bfren/ftps:dev
+            quay.io/bfren/ftps:${{ steps.version_major.outputs.contents }}-dev
+            quay.io/bfren/ftps:${{ steps.version_minor.outputs.contents }}-dev
             quay.io/bfren/ftps:${{ steps.version.outputs.contents }}-dev
+            quay.io/bfren/ftps:vsftpd${{ steps.vsftpd_major.outputs.contents }}-dev
+            quay.io/bfren/ftps:vsftpd${{ steps.vsftpd_major.outputs.contents }}-${{ steps.version.outputs.contents }}-dev
+            quay.io/bfren/ftps:vsftpd${{ steps.vsftpd_minor.outputs.contents }}-dev
+            quay.io/bfren/ftps:vsftpd${{ steps.vsftpd_minor.outputs.contents }}-${{ steps.version.outputs.contents }}-dev
+            quay.io/bfren/ftps:vsftpd${{ steps.vsftpd_revision.outputs.contents }}-dev
+            quay.io/bfren/ftps:vsftpd${{ steps.vsftpd_revision.outputs.contents }}-${{ steps.version.outputs.contents }}-dev
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}

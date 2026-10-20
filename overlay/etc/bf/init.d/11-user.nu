@@ -1,9 +1,17 @@
 use bf
+use bf-ftps
 bf env load
 
 # Create FTP user account if it does not already exit
 def main [] {
-    # ensure user and pass are set
+    # ensure the user, password and external address are set
+    let errors = bf-ftps checks environment
+    if ($errors | is-not-empty) {
+        $errors | each {|x| bf write notok $x } | ignore
+        bf write error "The FTPS server cannot be configured - see above."
+    }
+
+    # get variables
     let name = bf env FTPS_VSFTPD_USER
     let pass = bf env FTPS_VSFTPD_PASS
     let uid = bf env FTPS_VSFTPD_UID 1000

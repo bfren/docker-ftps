@@ -17,7 +17,6 @@ docker buildx build \
         -e BF_FTPS_VSFTPD_PASS=bar \
         -e BF_FTPS_VSFTPD_ENABLE_DEBUG_LOG=1 \
         -p "127.0.0.1:21:21" \
-        -p "127.0.0.1:990:990" \
         -p "127.0.0.1:18700-18710:18700-18710" \
         -v "$(pwd)/files:/files" \
         -v "$(pwd)/ssl:/ssl" \

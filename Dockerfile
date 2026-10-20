@@ -1,4 +1,4 @@
-FROM quay.io/bfren/alpine-s6:alpine3.24-6.5.0
+FROM quay.io/bfren/alpine-s6:alpine3.24-6.6.0
 
 LABEL org.opencontainers.image.source="https://github.com/bfren/docker-ftps"
 
@@ -6,7 +6,7 @@ ARG BF_IMAGE
 ARG BF_PUBLISHING
 ARG BF_VERSION
 
-EXPOSE 21 990 18700-18710
+EXPOSE 21 18700-18710
 
 COPY ./overlay /
 
