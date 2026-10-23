@@ -1,6 +1,7 @@
 #!/usr/bin/nu
 
 use bf
+use bf-ftps
 use bf-s6
 bf env load
 
@@ -11,8 +12,10 @@ def main [
     # set executable name - used to make log output more useful
     bf env x_set --override run $name
 
-    # run checks before executing service
-    bf write debug "No pre-run checks required."
+    # run checks before executing service - a certificate from another container may not have been written yet, so wait
+    # before exiting (S6 will automatically restart the service and check again)
+    let reason = bf-ftps checks cert (bf env FTPS_VSFTPD_CERT)
+    if ($reason | is-not-empty) { $reason | bf-s6 svc exit_preflight --sleep 30sec vsftpd }
 
     # launch vsftpd service
     bf write "Starting vsftpd."
