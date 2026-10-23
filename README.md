@@ -109,7 +109,7 @@ On every start:
 1. The user, password and external address are checked - the container stops if any are missing.
 2. The user is created (if it doesn't exist yet) with `/files` as its home, and given `/files`.
 3. If `/ssl/vsftpd.pem` doesn't exist, a self-signed certificate valid for ten years is created there.
-4. `vsftpd.conf` is generated, and vsftpd runs under S6. The container stops if it crashes.
+4. `vsftpd.conf` is generated, and vsftpd runs under S6 once `/ssl/vsftpd.pem` has contents (see below). The container stops if it crashes.
 
 Logins and file transfers must be encrypted, the user is kept inside `/files` (`chroot`), and anonymous logins are refused. Uploaded files are readable only by the user (`umask 077`).
 
@@ -120,6 +120,15 @@ The health check (every 30 seconds) logs in as the user with `lftp`, uploads a s
 ### Using your own certificate
 
 Put a PEM file containing both the certificate and its private key at `/ssl/vsftpd.pem`, then restart. Set `BF_FTPS_LFTP_VERIFY_CERT=yes` if the certificate is trusted for `127.0.0.1`.
+
+To use a certificate from [bfren/caddy-proxy](https://github.com/bfren/docker-caddy-proxy), mount its PEM file for your host name:
+
+```yaml
+    volumes:
+      - ./proxy/ssl/certs/ftp.example.com/ftp.example.com.pem:/ssl/vsftpd.pem:ro
+```
+
+caddy-proxy creates an empty file for each host name until the certificate is obtained. While `/ssl/vsftpd.pem` is empty, vsftpd waits, checking every 30 seconds, and starts once it has contents - no restart is needed. If Docker has created a directory instead (because the file didn't exist), the log says so: remove the directory, then restart caddy-proxy (to create the file) and this container.
 
 ## Testing
 

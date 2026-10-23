@@ -7,7 +7,8 @@ def main [] {
     # if an SSL certificate already exists, return
     let cert = bf env FTPS_VSFTPD_CERT
     if ($cert | path exists) {
-        bf write "SSL certificate already exists."
+        let reason = bf-ftps checks cert $cert
+        if ($reason | is-empty) { bf write "SSL certificate already exists." } else { bf write notok $"($reason)." }
         return
     }
 
