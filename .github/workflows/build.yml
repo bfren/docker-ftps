@@ -1,0 +1,34 @@
+name: build
+
+on:
+  push:
+    branches: ['**']
+    tags-ignore: ['**']
+  release:
+    types: [published]
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: bfren/docker/.github/workflows/build.yml@shared-build
+    with:
+      image: ftps
+      platforms: |
+        linux/amd64
+        linux/arm/v7
+        linux/arm64
+      tags: |
+        latest
+        ${VERSION_MAJOR}
+        ${VERSION_MINOR}
+        ${VERSION}
+        vsftpd${VSFTPD_MAJOR}
+        vsftpd${VSFTPD_MAJOR}-${VERSION}
+        vsftpd${VSFTPD_MINOR}
+        vsftpd${VSFTPD_MINOR}-${VERSION}
+        vsftpd${VSFTPD_REVISION}
+        vsftpd${VSFTPD_REVISION}-${VERSION}
+    secrets:
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      QUAY_TOKEN: ${{ secrets.QUAY_TOKEN }}
