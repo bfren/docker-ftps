@@ -1,6 +1,6 @@
 # FTPS
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/bfren/docker-ftps) ![Docker Pulls](https://img.shields.io/endpoint?url=https%3A%2F%2Fbfren.dev%2Fdocker%2Fpulls%2Fftps) ![Docker Image Size](https://img.shields.io/endpoint?url=https%3A%2F%2Fbfren.dev%2Fdocker%2Fsize%2Fftps) ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/bfren/docker-ftps/dev.yml?branch=main)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/bfren/docker-ftps) ![Docker Pulls](https://img.shields.io/endpoint?url=https%3A%2F%2Fbfren.dev%2Fdocker%2Fpulls%2Fftps) ![Docker Image Size](https://img.shields.io/endpoint?url=https%3A%2F%2Fbfren.dev%2Fdocker%2Fsize%2Fftps) ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/bfren/docker-ftps/build.yml?branch=main)
 
 [Docker Hub](https://hub.docker.com/r/bfren/ftps) - [Quay.io](https://quay.io/repository/bfren/ftps) - [bfren ecosystem](https://github.com/bfren/docker)
 
@@ -15,7 +15,7 @@ It is built on [Alpine + S6](https://github.com/bfren/docker-alpine-s6), with vs
 ```yaml
 services:
   ftps:
-    image: quay.io/bfren/ftps:5.2
+    image: quay.io/bfren/ftps:6.0
     restart: unless-stopped
     ports:
       - "0.0.0.0:21:21"
@@ -58,12 +58,12 @@ Images are published to Docker Hub (`bfren/ftps`) and Quay.io (`quay.io/bfren/ft
 | Tag                    | Example             | Use when                                   |
 | ---------------------- | ------------------- | ------------------------------------------ |
 | `latest`               |                     | You always want the newest image           |
-| `MAJOR`                | `5`                 | You want updates, but not breaking changes |
-| `MINOR`                | `5.2`               | You want fixes only - **recommended**      |
-| `VERSION`              | `5.2.0`             | You want to pin this image exactly         |
+| `MAJOR`                | `6`                 | You want updates, but not breaking changes |
+| `MINOR`                | `6.0`               | You want fixes only - **recommended**      |
+| `VERSION`              | `6.0.0`             | You want to pin this image exactly         |
 | `vsftpdX`, `vsftpdX.Y` | `vsftpd3.0`         | You want a vsftpd version                  |
 | `vsftpdX.Y.Z`          | `vsftpd3.0.5`       | You want an exact vsftpd release           |
-| `vsftpdX.Y.Z-VERSION`  | `vsftpd3.0.5-5.2.0` | You want to pin both                       |
+| `vsftpdX.Y.Z-VERSION`  | `vsftpd3.0.5-6.0.0` | You want to pin both                       |
 
 ## Configuration
 
