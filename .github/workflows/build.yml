@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   build:
-    uses: bfren/docker/.github/workflows/build.yml@shared-build
+    uses: bfren/docker/.github/workflows/build.yml@main
     with:
       image: ftps
       platforms: |
