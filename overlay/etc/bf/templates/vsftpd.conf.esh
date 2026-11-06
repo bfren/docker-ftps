@@ -56,10 +56,6 @@ dirmessage_enable=YES
 # You may change the default value for timing out a data connection.
 #data_connection_timeout=120
 #
-# It is recommended that you define on your system a unique user which the
-# ftp server can use as a totally isolated and unprivileged user.
-nopriv_user=<% bf-env FTPS_VSFTPD_USER %>
-#
 # Enable this and the server will recognise asynchronous ABOR requests. Not
 # recommended for security (the code is non-trivial). Not enabling it,
 # however, may confuse older FTP clients.
@@ -135,10 +131,7 @@ allow_anon_ssl=NO
 force_local_data_ssl=YES
 force_local_logins_ssl=YES
 
-# Next, we will restrict the type of connection to
-# TLS, which is more secure than SSL. We will do this
-# by explicitly allowing TLS and denying the use of SSL:
-ssl_tlsv1=YES
+# Deny the old SSL protocols - TLS versions are left at vsftpd's defaults
 ssl_sslv2=NO
 ssl_sslv3=NO
 
