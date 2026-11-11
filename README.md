@@ -60,10 +60,10 @@ Images are published to Docker Hub (`bfren/ftps`) and Quay.io (`quay.io/bfren/ft
 | `latest`               |                     | You always want the newest image           |
 | `MAJOR`                | `6`                 | You want updates, but not breaking changes |
 | `MINOR`                | `6.0`               | You want fixes only - **recommended**      |
-| `VERSION`              | `6.0.2`             | You want to pin this image exactly         |
+| `VERSION`              | `6.0.3`             | You want to pin this image exactly         |
 | `vsftpdX`, `vsftpdX.Y` | `vsftpd3.0`         | You want a vsftpd version                  |
 | `vsftpdX.Y.Z`          | `vsftpd3.0.5`       | You want an exact vsftpd release           |
-| `vsftpdX.Y.Z-VERSION`  | `vsftpd3.0.5-6.0.2` | You want to pin both                       |
+| `vsftpdX.Y.Z-VERSION`  | `vsftpd3.0.5-6.0.3` | You want to pin both                       |
 
 ## Configuration
 
@@ -87,7 +87,7 @@ Publish the whole passive range, with the same numbers on the host and in the co
 
 | Variable                                 | Values      | Description                                                                                                                    | Default                       |
 | ---------------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------ | ----------------------------- |
-| `BF_FTPS_VSFTPD_USER`                    | string      | **Required.** The user name to log in with.                                                                                    |                               |
+| `BF_FTPS_VSFTPD_USER`                    | string      | **Required.** The user name to log in with (not `vsftpd`, which is reserved).                                                  |                               |
 | `BF_FTPS_VSFTPD_PASS`                    | string      | **Required.** The user's password.                                                                                             |                               |
 | `BF_FTPS_EXTERNAL_URI`                   | host name   | The address clients use - told to clients for passive connections. Takes priority over `BF_FTPS_EXTERNAL_IP`.                  |                               |
 | `BF_FTPS_EXTERNAL_IP`                    | IP address  | The address clients use, if you don't have a host name. One of the two is required.                                            |                               |

@@ -27,6 +27,13 @@ export def environment__reports_missing_user_and_password [] {
     assert equal ["BF_FTPS_VSFTPD_USER must be set." "BF_FTPS_VSFTPD_PASS must be set."] $result
 }
 
+export def environment__rejects_reserved_user [] {
+    let result = with-env (valid | update BF_FTPS_VSFTPD_USER "vsftpd") { bf-ftps checks environment }
+
+    assert equal 1 ($result | length)
+    assert ($result.0 =~ "reserved")
+}
+
 export def environment__reports_missing_address [] {
     let result = with-env (valid | reject BF_FTPS_EXTERNAL_IP) { bf-ftps checks environment }
 

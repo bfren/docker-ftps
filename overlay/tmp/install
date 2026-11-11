@@ -17,6 +17,12 @@ def main [] {
     bf write "Installing additional packages."
     bf pkg install [lftp openssl]
 
+    # vsftpd's unprivileged process runs as this user - it must not own /files, and its uid and gid must be low,
+    # because some user namespaces (e.g. Podman's UserNS=auto) don't map 'nobody' (65534)
+    bf write "Adding vsftpd user."
+    { ^addgroup -S vsftpd } | bf handle
+    { ^adduser -S -D -H -h /var/empty -s /sbin/nologin -G vsftpd vsftpd } | bf handle
+
     # add bf-ftps module to config
     bf config use_mod bf-ftps
 

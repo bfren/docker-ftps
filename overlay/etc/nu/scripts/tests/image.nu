@@ -24,6 +24,15 @@ export def install__ssl_directory_is_linked [] {
     assert equal "/ssl" (^readlink /etc/ssl/private | str trim)
 }
 
+export def install__vsftpd_user_has_low_ids [] {
+    let user = open /etc/passwd | lines | split column ":" name x uid gid | where name == "vsftpd"
+
+    assert equal 1 ($user | length) "the vsftpd user should exist"
+    # user namespaces such as Podman's UserNS=auto may map only the first 1024 ids
+    assert (($user.0.uid | into int) < 1000) "the vsftpd uid should be below 1000"
+    assert (($user.0.gid | into int) < 1000) "the vsftpd gid should be below 1000"
+}
+
 
 #======================================================================================================================
 # scripts

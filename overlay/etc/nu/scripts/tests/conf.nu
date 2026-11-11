@@ -47,6 +47,13 @@ export def vsftpd__keeps_users_in_files_directory [] {
     assert ("local_root=/files" in $conf)
 }
 
+export def vsftpd__uses_own_unprivileged_user [] {
+    let conf = render vsftpd.conf
+
+    assert ("nopriv_user=vsftpd" in $conf)
+    assert not ("nopriv_user=fred" in $conf)
+}
+
 export def vsftpd__uses_ip_for_passive_mode [] {
     let conf = render vsftpd.conf
 
