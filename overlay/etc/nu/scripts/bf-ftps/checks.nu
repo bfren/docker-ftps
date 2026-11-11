@@ -6,6 +6,7 @@ export def environment []: nothing -> list<string> {
     [
         [((bf env --safe FTPS_VSFTPD_USER) == "") "BF_FTPS_VSFTPD_USER must be set."]
         [((bf env --safe FTPS_VSFTPD_PASS) == "") "BF_FTPS_VSFTPD_PASS must be set."]
+        [((bf env --safe FTPS_VSFTPD_USER) == "vsftpd") "BF_FTPS_VSFTPD_USER cannot be 'vsftpd' - that user name is reserved."]
         [$no_address "You must provide either BF_FTPS_EXTERNAL_URI or BF_FTPS_EXTERNAL_IP."]
     ] | where {|x| $x.0 } | each {|x| $x.1 }
 }
