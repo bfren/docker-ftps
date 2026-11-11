@@ -11,7 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Logins failed with `500 OOPS: setgid` in some user namespaces (e.g. Podman with `UserNS=auto`), because 6.0.2
   ran vsftpd's unprivileged process as `nobody` (uid and gid 65534), which they don't map. It now runs as a
-  dedicated `vsftpd` user with low ids, which still can't reach your files.
+  dedicated `vsftpd` user with low ids, which still can't reach your files. That name is now reserved: the
+  container won't start if `BF_FTPS_VSFTPD_USER` is `vsftpd`.
 
 ## [6.0.2] - 2026-11-10
 
