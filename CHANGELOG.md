@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.0.3] - Unreleased
+
+### Fixed
+
+- Logins failed with `500 OOPS: setgid` in some user namespaces (e.g. Podman with `UserNS=auto`), because 6.0.2
+  ran vsftpd's unprivileged process as `nobody` (uid and gid 65534), which they don't map. It now runs as a
+  dedicated `vsftpd` user with low ids, which still can't reach your files.
+
 ## [6.0.2] - 2026-11-10
 
 ### Changed
@@ -39,6 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Images are built and published by the shared `bfren/docker` build workflow (`build.yml`), replacing the separate
   `dev.yml` and `publish.yml` workflows.
 
+[6.0.3]: https://github.com/bfren/docker-ftps/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/bfren/docker-ftps/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/bfren/docker-ftps/compare/v6.0.0...v6.0.1
 [6.0.0]: https://github.com/bfren/docker-ftps/compare/v5.2.5...v6.0.0

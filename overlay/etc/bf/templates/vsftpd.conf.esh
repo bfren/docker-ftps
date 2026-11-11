@@ -56,6 +56,9 @@ dirmessage_enable=YES
 # You may change the default value for timing out a data connection.
 #data_connection_timeout=120
 #
+# The unprivileged user vsftpd runs as before login - created by the image, it does not own /files.
+nopriv_user=vsftpd
+#
 # Enable this and the server will recognise asynchronous ABOR requests. Not
 # recommended for security (the code is non-trivial). Not enabling it,
 # however, may confuse older FTP clients.
