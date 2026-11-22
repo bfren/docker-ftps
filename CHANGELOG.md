@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [6.0.4] - Unreleased
+
+### Fixed
+
+- README: the Quickstart is now numbered steps, with the `.env` file it uses and the firewall ports it needs.
+- README: fixing a directory Docker created in place of the certificate file is now a list of steps.
+
 ## [6.0.3] - 2026-11-11
 
 ### Fixed
@@ -48,6 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Images are built and published by the shared `bfren/docker` build workflow (`build.yml`), replacing the separate
   `dev.yml` and `publish.yml` workflows.
 
+[6.0.4]: https://github.com/bfren/docker-ftps/compare/v6.0.3...v6.0.4
 [6.0.3]: https://github.com/bfren/docker-ftps/compare/v6.0.2...v6.0.3
 [6.0.2]: https://github.com/bfren/docker-ftps/compare/v6.0.1...v6.0.2
 [6.0.1]: https://github.com/bfren/docker-ftps/compare/v6.0.0...v6.0.1
