@@ -78,6 +78,8 @@ Images are published to Docker Hub (`bfren/ftps`) and Quay.io (`quay.io/bfren/ft
 | `vsftpdX.Y.Z`          | `vsftpd3.0.5`       | You want an exact vsftpd release           |
 | `vsftpdX.Y.Z-VERSION`  | `vsftpd3.0.5-6.0.4` | You want to pin both                       |
 
+A new `MAJOR` version means a breaking change. Before moving to one, read the [changelog](CHANGELOG.md), where each breaking change is marked **Breaking**.
+
 ## Configuration
 
 ### Ports
