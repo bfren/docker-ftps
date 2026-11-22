@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [6.0.4] - Unreleased
 
+### Added
+
+- `docker-compose.yml` - the Quickstart example as a file you can copy.
+
 ### Fixed
 
 - README: the Quickstart is now numbered steps, with the `.env` file it uses and the firewall ports it needs.

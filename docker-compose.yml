@@ -1,0 +1,14 @@
+services:
+  ftps:
+    image: quay.io/bfren/ftps:6.0
+    restart: unless-stopped
+    ports:
+      - "0.0.0.0:21:21"
+      - "0.0.0.0:18700-18710:18700-18710"
+    environment:
+      - BF_FTPS_EXTERNAL_URI=ftp.example.com
+      - BF_FTPS_VSFTPD_USER=fred
+      - BF_FTPS_VSFTPD_PASS=${FTPS_PASS}
+    volumes:
+      - ./v/files:/files
+      - ./v/ssl:/ssl

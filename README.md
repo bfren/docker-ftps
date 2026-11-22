@@ -31,6 +31,8 @@ services:
       - ./v/ssl:/ssl
 ```
 
+This example is also in [`docker-compose.yml`](docker-compose.yml).
+
 `.env` (keep it out of version control):
 
 ```sh
