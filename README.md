@@ -12,6 +12,8 @@ It is built on [Alpine + S6](https://github.com/bfren/docker-alpine-s6), with vs
 
 ## Quickstart
 
+`docker-compose.yml`:
+
 ```yaml
 services:
   ftps:
@@ -29,7 +31,18 @@ services:
       - ./v/ssl:/ssl
 ```
 
-Run `docker compose up -d`, then connect with an FTP client, e.g. in FileZilla or WinSCP:
+This example is also in [`docker-compose.yml`](docker-compose.yml).
+
+`.env` (keep it out of version control):
+
+```sh
+FTPS_PASS=change-me
+```
+
+1. Point the DNS record for `ftp.example.com` at your server. `BF_FTPS_EXTERNAL_URI` must be the address clients use, because the server sends it to them for each file transfer.
+2. Allow ports 21 and 18700-18710 through your firewall - the second range carries the file transfers.
+3. Run `docker compose up -d`.
+4. Connect with an FTP client, e.g. FileZilla or WinSCP:
 
 | Setting    | Value                                                   |
 | ---------- | ------------------------------------------------------- |
@@ -60,10 +73,12 @@ Images are published to Docker Hub (`bfren/ftps`) and Quay.io (`quay.io/bfren/ft
 | `latest`               |                     | You always want the newest image           |
 | `MAJOR`                | `6`                 | You want updates, but not breaking changes |
 | `MINOR`                | `6.0`               | You want fixes only - **recommended**      |
-| `VERSION`              | `6.0.3`             | You want to pin this image exactly         |
+| `VERSION`              | `6.0.4`             | You want to pin this image exactly         |
 | `vsftpdX`, `vsftpdX.Y` | `vsftpd3.0`         | You want a vsftpd version                  |
 | `vsftpdX.Y.Z`          | `vsftpd3.0.5`       | You want an exact vsftpd release           |
-| `vsftpdX.Y.Z-VERSION`  | `vsftpd3.0.5-6.0.3` | You want to pin both                       |
+| `vsftpdX.Y.Z-VERSION`  | `vsftpd3.0.5-6.0.4` | You want to pin both                       |
+
+A new `MAJOR` version means a breaking change. Before moving to one, read the [changelog](CHANGELOG.md), where each breaking change is marked **Breaking**.
 
 ## Configuration
 
@@ -128,7 +143,11 @@ To use a certificate from [bfren/caddy-proxy](https://github.com/bfren/docker-ca
       - ./proxy/ssl/certs/ftp.example.com/ftp.example.com.pem:/ssl/vsftpd.pem:ro
 ```
 
-caddy-proxy creates an empty file for each host name until the certificate is obtained. While `/ssl/vsftpd.pem` is empty, vsftpd waits, checking every 30 seconds, and starts once it has contents - no restart is needed. If Docker has created a directory instead (because the file didn't exist), the log says so: remove the directory, then restart caddy-proxy (to create the file) and this container.
+caddy-proxy creates an empty file for each host name until the certificate is obtained. While `/ssl/vsftpd.pem` is empty, vsftpd waits, checking every 30 seconds, and starts once it has contents - no restart is needed. If the file didn't exist when this container started, Docker creates a directory in its place, and the log says so. To fix it:
+
+1. Stop this container, and remove the directory Docker created on the host.
+2. Restart caddy-proxy, which creates the file.
+3. Start this container again.
 
 ## Testing
 
